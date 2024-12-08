@@ -1,3 +1,4 @@
+export type PayPeriod = 'weekly' | 'fortnightly' | 'monthly' | 'yearly';
 
 export interface TaxCalculationResult {
   grossIncome: number;
@@ -8,6 +9,30 @@ export interface TaxCalculationResult {
   studentLoan: number;
   kiwiSaverRate: number;
   hasStudentLoan: boolean;
+  weekly: {
+    grossIncome: number;
+    netIncome: number;
+    paye: number;
+    acc: number;
+    kiwiSaver: number;
+    studentLoan: number;
+  };
+  fortnightly: {
+    grossIncome: number;
+    netIncome: number;
+    paye: number;
+    acc: number;
+    kiwiSaver: number;
+    studentLoan: number;
+  };
+  monthly: {
+    grossIncome: number;
+    netIncome: number;
+    paye: number;
+    acc: number;
+    kiwiSaver: number;
+    studentLoan: number;
+  };
 }
 
 export function calculateTax(
@@ -44,6 +69,33 @@ export function calculateTax(
   const studentLoan = hasStudentLoan ? income * 0.12 : 0;
   const netIncome = income - paye - acc - kiwiSaver - studentLoan;
 
+  const periodicResults = {
+    weekly: {
+      grossIncome: income / 52,
+      netIncome: netIncome / 52,
+      paye: paye / 52,
+      acc: acc / 52,
+      kiwiSaver: kiwiSaver / 52,
+      studentLoan: studentLoan / 52,
+    },
+    fortnightly: {
+      grossIncome: income / 26,
+      netIncome: netIncome / 26,
+      paye: paye / 26,
+      acc: acc / 26,
+      kiwiSaver: kiwiSaver / 26,
+      studentLoan: studentLoan / 26,
+    },
+    monthly: {
+      grossIncome: income / 12,
+      netIncome: netIncome / 12,
+      paye: paye / 12,
+      acc: acc / 12,
+      kiwiSaver: kiwiSaver / 12,
+      studentLoan: studentLoan / 12,
+    },
+  };
+
   return {
     grossIncome: income,
     netIncome,
@@ -52,6 +104,7 @@ export function calculateTax(
     kiwiSaver,
     studentLoan,
     kiwiSaverRate,
-    hasStudentLoan
+    hasStudentLoan,
+    ...periodicResults
   };
 }

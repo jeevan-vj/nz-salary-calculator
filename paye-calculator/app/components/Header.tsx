@@ -1,21 +1,20 @@
-
-import { motion } from 'framer-motion';
+"use client";
+import { useTheme } from '../theme/ThemeProvider';
 
 export default function Header() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="w-full py-6 bg-background border-b"
-    >
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-primary">
-          NZ Salary Calculator
-        </h1>
-        <p className="text-muted-foreground">
-          Calculate your take-home pay including PAYE, ACC, and KiwiSaver
-        </p>
+    <header className="p-4 border-b bg-background">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <h1 className="text-xl font-bold">NZ Salary Calculator</h1>
+        <button
+          onClick={toggleTheme}
+          className="btn"
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
       </div>
-    </motion.header>
+    </header>
   );
 }
