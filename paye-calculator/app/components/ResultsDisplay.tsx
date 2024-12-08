@@ -26,8 +26,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-4 p-6 border rounded-lg bg-card text-card-foreground"
+      
     >
+      <div className="space-y-4 p-6 border rounded-lg bg-card text-card-foreground">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Your Tax Breakdown</h2>
         <select 
@@ -68,6 +69,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <span>Net Income:</span>
           <span>${periodData.netIncome.toFixed(2)}</span>
         </div>
+      </div>
       </div>
     </motion.div>
   );
