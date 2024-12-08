@@ -1,21 +1,48 @@
-
 import { motion } from 'framer-motion';
+import { TaxCalculationResult } from '../utils/taxCalculator';
 
-export default function Header() {
+interface ResultsDisplayProps {
+  results: TaxCalculationResult | null;
+}
+
+export default function ResultsDisplay({ results }: ResultsDisplayProps) {
+  if (!results) return null;
+
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="w-full py-6 bg-background border-b"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-4 p-6 border rounded-lg"
     >
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-primary">
-          NZ Salary Calculator
-        </h1>
-        <p className="text-muted-foreground">
-          Calculate your take-home pay including PAYE, ACC, and KiwiSaver
-        </p>
+      <h2 className="text-2xl font-bold">Your Tax Breakdown</h2>
+      <div className="grid gap-2">
+        <div className="flex justify-between">
+          <span>Gross Income:</span>
+          <span>${results.grossIncome.toFixed(2)}</span>
+        </div>
+        <div className="flex justify-between">
+          <span>PAYE:</span>
+          <span>${results.paye.toFixed(2)}</span>
+        </div>
+        <div className="flex justify-between">
+          <span>ACC:</span>
+          <span>${results.acc.toFixed(2)}</span>
+        </div>
+        <div className="flex justify-between">
+          <span>KiwiSaver:</span>
+          <span>${results.kiwiSaver.toFixed(2)}</span>
+        </div>
+        {results.hasStudentLoan && (
+          <div className="flex justify-between">
+            <span>Student Loan:</span>
+            <span>${results.studentLoan.toFixed(2)}</span>
+          </div>
+        )}
+        <div className="flex justify-between font-bold pt-2 border-t">
+          <span>Net Income:</span>
+          <span>${results.netIncome.toFixed(2)}</span>
+        </div>
       </div>
-    </motion.header>
+    </motion.div>
   );
 }
