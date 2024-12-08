@@ -1,0 +1,124 @@
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+
+export function TaxConfiguration() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+
+  const handleTabClick = (value: string) => {
+    if (activeTab === value) {
+      setIsExpanded(false);
+      setActiveTab(null);
+    } else {
+      setIsExpanded(true);
+      setActiveTab(value);
+    }
+  };
+
+  return (
+    <Tabs 
+      defaultValue="general" 
+      className="w-full"
+      value={activeTab ?? undefined}
+    >
+      <TabsList className="grid w-full grid-cols-5">
+        {["general", "paye", "acc", "studentLoan", "secondary"].map((tab) => (
+          <TabsTrigger
+            key={tab}
+            value={tab}
+            onClick={() => handleTabClick(tab)}
+            className={activeTab === tab ? "font-bold" : ""}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+
+      {isExpanded && (
+        <>
+          <TabsContent value="general" className="space-y-4 mt-4">
+            <div className="grid gap-4">
+              <div className="space-y-2">
+                <Label>Standard Hours per Week</Label>
+                <Input type="number" placeholder="40" />
+              </div>
+              <div className="flex items-center space-x-2">
+                <Switch id="overtime" />
+                <Label htmlFor="overtime">Enable Overtime Calculations</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Switch id="holiday-pay" />
+                <Label htmlFor="holiday-pay">Add Holiday Pay (Casual Workers)</Label>
+              </div>
+              <div className="space-y-2">
+                <Label>Pay Rise Percentage</Label>
+                <Input type="number" placeholder="0" />
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="paye" className="space-y-4 mt-4">
+            <div className="grid gap-4">
+              <h3 className="text-lg font-semibold">Tax Brackets (2023-2024)</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label>$0 - $14,000</Label>
+                  <div className="text-sm text-muted-foreground">Tax Rate: 10.5%</div>
+                </div>
+                <div>
+                  <Label>$14,001 - $48,000</Label>
+                  <div className="text-sm text-muted-foreground">Tax Rate: 17.5%</div>
+                </div>
+                <div>
+                  <Label>$48,001 - $70,000</Label>
+                  <div className="text-sm text-muted-foreground">Tax Rate: 30%</div>
+                </div>
+                <div>
+                  <Label>$70,001 - $180,000</Label>
+                  <div className="text-sm text-muted-foreground">Tax Rate: 33%</div>
+                </div>
+                <div>
+                  <Label>$180,001+</Label>
+                  <div className="text-sm text-muted-foreground">Tax Rate: 39%</div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="acc" className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label>ACC Levy Rate</Label>
+              <div className="text-sm text-muted-foreground">Current rate: 1.39%</div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="studentLoan" className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label>Student Loan Repayment Rate</Label>
+              <div className="text-sm text-muted-foreground">Current rate: 12%</div>
+              <div className="text-sm text-muted-foreground">
+                Applies to income over $20,280 per year
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="secondary" className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label>Secondary Tax Rate</Label>
+              <select className="w-full p-2 border rounded">
+                <option value="0.105">10.5%</option>
+                <option value="0.175">17.5%</option>
+                <option value="0.30">30%</option>
+                <option value="0.33">33%</option>
+                <option value="0.39">39%</option>
+              </select>
+            </div>
+          </TabsContent>
+        </>
+      )}
+    </Tabs>
+  );
+}

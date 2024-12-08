@@ -5,6 +5,7 @@ import { useState } from 'react';
 import ResultsDisplay from './components/ResultsDisplay';
 import { calculateTax, TaxCalculationResult } from './utils/taxCalculator';
 import InputForm from './components/InputFrom';
+import { TaxConfiguration } from './components/TaxConfiguration';
 
 export default function Home() {
   const [results, setResults] = useState<TaxCalculationResult | null>(null);
@@ -15,8 +16,10 @@ export default function Home() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-2xl">
+    <main className="container mx-auto p-4 space-y-6">
+      
       <InputForm onCalculate={handleCalculate} />
+      <TaxConfiguration />
       <div className="mt-8">
         <ResultsDisplay results={results} />
       </div>
