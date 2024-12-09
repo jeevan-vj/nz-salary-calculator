@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from './theme/ThemeProvider'
 import Header from './components/Header'
 import GoogleAnalytics from './components/GoogleAnalytics';
+import Footer from './components/Footer';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,12 +33,15 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
       <body className="transition-colors duration-200">
-        <ThemeProvider>
-          <Header />
-          <main className="max-w-7xl mx-auto p-4">
-            {children}
-          </main>
-        </ThemeProvider>
+        <div className="flex flex-col min-h-screen">
+          <ThemeProvider>
+            <Header />
+            <main className="flex-grow max-w-7xl mx-auto p-4">
+              {children}
+            </main>
+          </ThemeProvider>
+          <Footer />
+        </div>
       </body>
     </html>
   );
