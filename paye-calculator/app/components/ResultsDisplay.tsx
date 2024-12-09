@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { TaxCalculationResult, PayPeriod } from '../utils/taxCalculator';
 import { useState } from 'react';
+import SalaryDistributionChart from './SalaryDistributionChart';
 
 interface ResultsDisplayProps {
   results: TaxCalculationResult | null;
@@ -70,6 +71,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <span>${periodData.netIncome.toFixed(2)}</span>
         </div>
       </div>
+      
+      <SalaryDistributionChart
+        grossIncome={periodData.grossIncome}
+        netIncome={periodData.netIncome}
+        paye={periodData.paye}
+        acc={periodData.acc}
+        kiwiSaver={periodData.kiwiSaver}
+        studentLoan={periodData.studentLoan}
+      />
       </div>
     </motion.div>
   );
