@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
+import { event } from '../utils/gtag';
 
 interface InputFormProps {
   onCalculate: (income: number, kiwiSaverRate: number, hasStudentLoan: boolean) => void;
@@ -17,6 +18,12 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onCalculate(income, kiwiSaverRate, hasStudentLoan);
+    event({
+      action: 'calculate_salary',
+      category: 'engagement',
+      label: 'salary_calculator',
+      value: income
+    });
   };
 
   return (

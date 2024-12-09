@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from './theme/ThemeProvider'
 import Header from './components/Header'
+import GoogleAnalytics from './components/GoogleAnalytics';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="transition-colors duration-200">
         <ThemeProvider>
           <Header />
