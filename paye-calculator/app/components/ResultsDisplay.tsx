@@ -1,15 +1,25 @@
 import { motion } from 'framer-motion';
 import { TaxCalculationResult, PayPeriod } from '../utils/taxCalculator';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import SalaryDistributionChart from './SalaryDistributionChart';
+import LoadingSpinner from './LoadingSpinner';
 
 interface ResultsDisplayProps {
   results: TaxCalculationResult | null;
+  isLoading: boolean;  // Add this line
 }
 
-export default function ResultsDisplay({ results }: ResultsDisplayProps) {
+export default function ResultsDisplay({ results, isLoading }: ResultsDisplayProps) {
   const [selectedPeriod, setSelectedPeriod] = useState<PayPeriod>('yearly');
+  const resultsRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (results && window.innerWidth <= 768) {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [results]);
+
+  if (isLoading) return <LoadingSpinner />;
   if (!results) return null;
 
   const periodData = selectedPeriod === 'yearly' 
@@ -25,6 +35,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
   return (
     <motion.div
+      ref={resultsRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       

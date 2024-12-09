@@ -1,13 +1,12 @@
-
 'use client';
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your GA4 measurement ID
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
 
-export default function GoogleAnalytics() {
+function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -19,8 +18,15 @@ export default function GoogleAnalytics() {
     }
   }, [pathname, searchParams]);
 
+  return null;
+}
+
+export default function GoogleAnalytics() {
   return (
     <>
+      <Suspense fallback={null}>
+        <Analytics />
+      </Suspense>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
