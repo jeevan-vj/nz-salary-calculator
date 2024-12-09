@@ -33,15 +33,12 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
       <body className="transition-colors duration-200">
-        <div className="flex flex-col min-h-screen">
-          <ThemeProvider>
+      <ThemeProvider>
             <Header />
-            <main className="flex-grow max-w-7xl mx-auto p-4">
+            <main className="max-w-7xl mx-auto p-4">
               {children}
             </main>
           </ThemeProvider>
-          <Footer />
-        </div>
       </body>
     </html>
   );
