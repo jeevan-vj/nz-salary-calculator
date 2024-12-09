@@ -6,14 +6,16 @@ import { Switch } from "@/components/ui/switch";
 export function TaxConfiguration() {
   return (
     <Tabs defaultValue="general" className="w-full">
-      <div className="overflow-x-auto scrollbar-hide">
-        <TabsList className="w-full inline-flex min-w-full">
-          <TabsTrigger value="general" className="min-w-[100px]">General</TabsTrigger>
-          <TabsTrigger value="paye" className="min-w-[100px]">PAYE</TabsTrigger>
-          <TabsTrigger value="acc" className="min-w-[100px]">ACC</TabsTrigger>
-          <TabsTrigger value="studentLoan" className="min-w-[100px]">Student Loan</TabsTrigger>
-          <TabsTrigger value="secondary" className="min-w-[100px]">Secondary Tax</TabsTrigger>
-        </TabsList>
+      <div className="relative w-full">
+        <div className="overflow-x-auto scrollbar-hide">
+          <TabsList className="w-max border-b">
+            <TabsTrigger value="general" className="min-w-[100px]">General</TabsTrigger>
+            <TabsTrigger value="paye" className="min-w-[100px]">PAYE</TabsTrigger>
+            <TabsTrigger value="acc" className="min-w-[100px]">ACC</TabsTrigger>
+            <TabsTrigger value="studentLoan" className="min-w-[100px]">Student Loan</TabsTrigger>
+            <TabsTrigger value="secondary" className="min-w-[100px]">Secondary Tax</TabsTrigger>
+          </TabsList>
+        </div>
       </div>
 
       <TabsContent value="general" className="space-y-4">
