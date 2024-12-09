@@ -1,4 +1,3 @@
-
 export const siteMetadata = {
   title: 'NZ Salary Calculator | PAYE Tax Calculator | Hourly Rate Calculator',
   description: 'Free New Zealand salary calculator. Calculate PAYE, take-home pay, hourly rate, and tax deductions. Most accurate NZ income tax calculator.',
@@ -6,7 +5,7 @@ export const siteMetadata = {
   openGraph: {
     type: 'website',
     locale: 'en_NZ',
-    url: 'https://your-domain.com',
+    url: 'https://nzsalarycalculator.co.nz',
     siteName: 'NZ Salary Calculator',
     images: [
       {

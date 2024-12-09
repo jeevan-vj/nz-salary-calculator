@@ -22,12 +22,12 @@ export default function Header() {
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://your-domain.com"
+              "item": "https://nzsalarycalculator.co.nz"
             }, {
               "@type": "ListItem",
               "position": 2,
               "name": "Salary Calculator",
-              "item": "https://your-domain.com/calculator"
+              "item": "https://nzsalarycalculator.co.nz/calculator"
             }]
           })}
         </script>

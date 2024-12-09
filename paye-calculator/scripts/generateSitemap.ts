@@ -1,8 +1,7 @@
-
 import { writeFileSync } from 'fs';
 import { format } from 'date-fns';
 
-const domain = 'https://your-domain.com'; // Replace with your actual domain
+const domain = 'https://nzsalarycalculator.co.nz'; // Replace with your actual domain
 
 const routes = [
   '/',
