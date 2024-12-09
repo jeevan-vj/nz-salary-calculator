@@ -15,6 +15,30 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   const [kiwiSaverRate, setKiwiSaverRate] = useState<number>(3);
   const [hasStudentLoan, setHasStudentLoan] = useState<boolean>(false);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onCalculate(income, kiwiSaverRate, hasStudentLoan);
@@ -28,14 +52,20 @@ export default function InputForm({ onCalculate }: InputFormProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
     >
       <form 
         className="space-y-6"
         onSubmit={handleSubmit}
       >
-        <div className="space-y-2">
+        <motion.div 
+          className="space-y-2"
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        >
           <label className="text-sm font-medium">Annual Income</label>
           <Input
             type="number"
@@ -43,9 +73,14 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             onChange={(e) => setIncome(Number(e.target.value))}
             pattern='[0-9]*'
           />
-        </div>
+        </motion.div>
 
-        <div className="space-y-2">
+        <motion.div 
+          className="space-y-2"
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        >
           <label className="text-sm font-medium">KiwiSaver Rate: {kiwiSaverRate}%</label>
           <Slider
             defaultValue={[kiwiSaverRate]}
@@ -55,9 +90,14 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             onValueChange={(value) => setKiwiSaverRate(value[0])}
             className="w-full"
           />
-        </div>
+        </motion.div>
 
-        <div className="flex items-center space-x-2">
+        <motion.div 
+          className="flex items-center space-x-2"
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        >
           <Checkbox
             id="student-loan"
             checked={hasStudentLoan}
@@ -66,11 +106,17 @@ export default function InputForm({ onCalculate }: InputFormProps) {
           <label htmlFor="student-loan" className="text-sm font-medium">
             I have a student loan
           </label>
-        </div>
+        </motion.div>
 
-        <Button type="submit" className="w-full">
-          Calculate
-        </Button>
+        <motion.div
+          variants={itemVariants}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        >
+          <Button type="submit" className="w-full">
+            Calculate
+          </Button>
+        </motion.div>
       </form>
     </motion.div>
   );
