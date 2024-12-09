@@ -41,8 +41,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             type="number"
             value={income}
             onChange={(e) => setIncome(Number(e.target.value))}
-            min="0"
-            step="1000"
+            pattern='[0-9]*'
           />
         </div>
 

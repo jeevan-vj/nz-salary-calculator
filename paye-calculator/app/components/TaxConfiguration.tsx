@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,13 +6,15 @@ import { Switch } from "@/components/ui/switch";
 export function TaxConfiguration() {
   return (
     <Tabs defaultValue="general" className="w-full">
-      <TabsList className="grid w-full grid-cols-5">
-        <TabsTrigger value="general">General</TabsTrigger>
-        <TabsTrigger value="paye">PAYE</TabsTrigger>
-        <TabsTrigger value="acc">ACC</TabsTrigger>
-        <TabsTrigger value="studentLoan">Student Loan</TabsTrigger>
-        <TabsTrigger value="secondary">Secondary Tax</TabsTrigger>
-      </TabsList>
+      <div className="overflow-x-auto scrollbar-hide">
+        <TabsList className="w-full inline-flex min-w-full">
+          <TabsTrigger value="general" className="min-w-[100px]">General</TabsTrigger>
+          <TabsTrigger value="paye" className="min-w-[100px]">PAYE</TabsTrigger>
+          <TabsTrigger value="acc" className="min-w-[100px]">ACC</TabsTrigger>
+          <TabsTrigger value="studentLoan" className="min-w-[100px]">Student Loan</TabsTrigger>
+          <TabsTrigger value="secondary" className="min-w-[100px]">Secondary Tax</TabsTrigger>
+        </TabsList>
+      </div>
 
       <TabsContent value="general" className="space-y-4">
         <div className="grid gap-4">
