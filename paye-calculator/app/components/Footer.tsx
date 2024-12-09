@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function Footer() {
   return (
    
-      <div className="flex items-center justify-center gap-1">
+      <div className="flex items-center justify-center gap-1 py-6">
         Built with{' '}
         <span
           className="text-red-500 inline-block"

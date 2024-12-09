@@ -28,17 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
       </head>
       <body className="transition-colors duration-200">
-      <ThemeProvider>
-            <Header />
-            <main className="max-w-7xl mx-auto p-4">
-              {children}
-            </main>
-          </ThemeProvider>
+        <ThemeProvider>
+              <Header />
+              <main className="max-w-7xl mx-auto p-4">
+                {children}
+              </main>
+              <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
