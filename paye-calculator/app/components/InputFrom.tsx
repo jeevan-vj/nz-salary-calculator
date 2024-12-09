@@ -11,9 +11,14 @@ interface InputFormProps {
 }
 
 export default function InputForm({ onCalculate }: InputFormProps) {
-  const [income, setIncome] = useState<number>(70000);
+  const [income, setIncome] = useState<string>("70000");
   const [kiwiSaverRate, setKiwiSaverRate] = useState<number>(3);
   const [hasStudentLoan, setHasStudentLoan] = useState<boolean>(false);
+
+  const isValidIncome = (value: string) => {
+    const num = Number(value);
+    return value !== '' && !isNaN(num) && num >= 0;
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,12 +46,13 @@ export default function InputForm({ onCalculate }: InputFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onCalculate(income, kiwiSaverRate, hasStudentLoan);
+    const incomeNumber = Number(income) || 0;
+    onCalculate(incomeNumber, kiwiSaverRate, hasStudentLoan);
     event({
       action: 'calculate_salary',
       category: 'engagement',
       label: 'salary_calculator',
-      value: income
+      value: incomeNumber
     });
   };
 
@@ -70,7 +76,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
           <Input
             type="number"
             value={income}
-            onChange={(e) => setIncome(Number(e.target.value))}
+            onChange={(e) => setIncome(e.target.value)}
             pattern='[0-9]*'
           />
         </motion.div>
@@ -110,10 +116,14 @@ export default function InputForm({ onCalculate }: InputFormProps) {
 
         <motion.div
           variants={itemVariants}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: isValidIncome(income) ? 1.05 : 1 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         >
-          <Button type="submit" className="w-full">
+          <Button 
+            type="submit" 
+            className="w-full"
+            disabled={!isValidIncome(income)}
+          >
             Calculate
           </Button>
         </motion.div>

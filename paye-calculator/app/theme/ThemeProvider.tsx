@@ -1,4 +1,3 @@
-
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -23,6 +22,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle('dark', savedTheme === 'dark');
     }
+    // Add transition classes when component mounts
+    document.documentElement.classList.add('theme-transition');
+    
+    // Remove transition class after initial mount to prevent initial animation
+    const timeout = setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition');
+    }, 0);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   if (!mounted) {

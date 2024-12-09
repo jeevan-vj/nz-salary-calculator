@@ -101,3 +101,20 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: all 0.3s ease-in-out !important;
+  transition-property: background-color, border-color, color, fill, stroke !important;
+}
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
