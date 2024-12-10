@@ -71,10 +71,20 @@ export default function InputForm({ onCalculate }: InputFormProps) {
     });
   };
 
-  // Call handleCalculate whenever inputs change
-  useEffect(() => {
-    handleCalculate();
-  }, [income, kiwiSaverRate, hasStudentLoan, includeKiwiSaver]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const incomeNumber = Number(income) || 0;
+    const kiwiSaverRateToUse = includeKiwiSaver ? kiwiSaverRate : 0;
+    onCalculate(incomeNumber, kiwiSaverRateToUse, hasStudentLoan);
+    event({
+      action: 'calculate_salary',
+      category: 'engagement',
+      label: 'salary_calculator',
+      value: incomeNumber
+    });
+  };
+
+
 
   return (
     <motion.div
@@ -84,7 +94,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
     >
       <form 
         className="space-y-6"
-        onSubmit={(e) => e.preventDefault()} // Prevent form submission
+        onSubmit={handleSubmit} 
       >
         <motion.div 
           className="space-y-2"
