@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import { event } from '../utils/gtag';
+import { Switch } from "@/components/ui/switch";
 
 interface InputFormProps {
   onCalculate: (income: number, kiwiSaverRate: number, hasStudentLoan: boolean) => void;
@@ -14,6 +15,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   const [income, setIncome] = useState<string>("70000");
   const [kiwiSaverRate, setKiwiSaverRate] = useState<number>(3);
   const [hasStudentLoan, setHasStudentLoan] = useState<boolean>(false);
+  const [includeKiwiSaver, setIncludeKiwiSaver] = useState<boolean>(true);
 
   const isValidIncome = (value: string) => {
     const num = Number(value);
@@ -44,10 +46,23 @@ export default function InputForm({ onCalculate }: InputFormProps) {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const sliderVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: {
+      opacity: 1,
+      height: 'auto',
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
+  const handleCalculate = () => {
     const incomeNumber = Number(income) || 0;
-    onCalculate(incomeNumber, kiwiSaverRate, hasStudentLoan);
+    const kiwiSaverRateToUse = includeKiwiSaver ? kiwiSaverRate : 0;
+    onCalculate(incomeNumber, kiwiSaverRateToUse, hasStudentLoan);
     event({
       action: 'calculate_salary',
       category: 'engagement',
@@ -55,6 +70,11 @@ export default function InputForm({ onCalculate }: InputFormProps) {
       value: incomeNumber
     });
   };
+
+  // Call handleCalculate whenever inputs change
+  useEffect(() => {
+    handleCalculate();
+  }, [income, kiwiSaverRate, hasStudentLoan, includeKiwiSaver]);
 
   return (
     <motion.div
@@ -64,7 +84,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
     >
       <form 
         className="space-y-6"
-        onSubmit={handleSubmit}
+        onSubmit={(e) => e.preventDefault()} // Prevent form submission
       >
         <motion.div 
           className="space-y-2"
@@ -82,24 +102,47 @@ export default function InputForm({ onCalculate }: InputFormProps) {
         </motion.div>
 
         <motion.div 
-          className="space-y-2"
+          className="flex items-center space-x-2"
           variants={itemVariants}
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         >
-          <label className="text-sm font-medium">KiwiSaver Rate: {kiwiSaverRate}%</label>
-          <Slider
-            defaultValue={[kiwiSaverRate]}
-            max={10}
-            min={3}
-            step={1}
-            onValueChange={(value) => setKiwiSaverRate(value[0])}
-            className="w-full"
+          <Switch
+            id="include-kiwisaver"
+            checked={includeKiwiSaver}
+            onCheckedChange={(checked) => setIncludeKiwiSaver(checked === true)}
           />
+          <label htmlFor="include-kiwisaver" className="text-sm font-medium">
+            Include KiwiSaver
+          </label>
+        </motion.div>
+
+        <motion.div
+          initial={includeKiwiSaver ? "visible" : "hidden"}
+          animate={includeKiwiSaver ? "visible" : "hidden"}
+          variants={sliderVariants}
+          className="overflow-hidden mb-2"
+        >
+          <motion.div 
+            className="space-y-2"
+            variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          >
+            <label className="text-sm font-medium">KiwiSaver Rate: {kiwiSaverRate}%</label>
+            <Slider
+              defaultValue={[kiwiSaverRate]}
+              max={10}
+              min={3}
+              step={1}
+              onValueChange={(value) => setKiwiSaverRate(value[0])}
+              className="w-full"
+            />
+          </motion.div>
         </motion.div>
 
         <motion.div 
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 space-y-2"
           variants={itemVariants}
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
