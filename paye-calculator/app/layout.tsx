@@ -38,6 +38,13 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          {`(adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5489372004076046",
+            enable_page_level_ads: true
+          });`}
+        </script>
       </head>
       <body className="transition-colors duration-200">
         <ThemeProvider>
