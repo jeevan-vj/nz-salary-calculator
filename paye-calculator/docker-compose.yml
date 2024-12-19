@@ -4,7 +4,7 @@ services:
   paye-calculator:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ${DOCKERFILE:-Dockerfile}
     ports:
       - "3000:3000"
     volumes:
@@ -12,4 +12,7 @@ services:
       - /app/node_modules
       - /app/.next
     environment:
-      - NODE_ENV=production 
+      - NODE_ENV=${NODE_ENV:-production}
+      - WATCHPACK_POLLING=${WATCHPACK_POLLING:-false}
+    stdin_open: true
+    tty: true

@@ -11,7 +11,9 @@
     "generate-sitemap": "tsx scripts/generateSitemap.ts",
     "docker-build": "docker-compose build",
     "docker-start": "docker-compose up",
-    "docker-stop": "docker-compose down"
+    "docker-stop": "docker-compose down",
+    "docker-dev": "cross-env DOCKERFILE=Dockerfile.dev NODE_ENV=development WATCHPACK_POLLING=true docker-compose up",
+    "docker-dev-build": "cross-env DOCKERFILE=Dockerfile.dev docker-compose build"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.2",
@@ -43,6 +45,7 @@
     "@types/node": "^20.17.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "date-fns": "^4.1.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.4",
