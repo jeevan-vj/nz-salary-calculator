@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "generate-sitemap": "tsx scripts/generateSitemap.ts"
+    "generate-sitemap": "tsx scripts/generateSitemap.ts",
+    "docker-build": "docker-compose build",
+    "docker-start": "docker-compose up",
+    "docker-stop": "docker-compose down"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.2",
