@@ -131,7 +131,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
           initial={includeKiwiSaver ? "visible" : "hidden"}
           animate={includeKiwiSaver ? "visible" : "hidden"}
           variants={sliderVariants}
-          className="overflow-hidden mb-2"
+          className="mb-2"
         >
           <motion.div 
             className="space-y-2"
