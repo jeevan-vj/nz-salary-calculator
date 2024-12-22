@@ -1,4 +1,4 @@
-export type PayPeriod = 'weekly' | 'fortnightly' | 'monthly' | 'yearly';
+export type PayPeriod = 'hourly' | 'weekly' | 'fortnightly' | 'monthly' | 'yearly';
 
 export interface TaxCalculationResult {
   grossIncome: number;
@@ -9,6 +9,14 @@ export interface TaxCalculationResult {
   studentLoan: number;
   kiwiSaverRate: number;
   hasStudentLoan: boolean;
+  hourly: {
+    grossIncome: number;
+    netIncome: number;
+    paye: number;
+    acc: number;
+    kiwiSaver: number;
+    studentLoan: number;
+  };
   weekly: {
     grossIncome: number;
     netIncome: number;
@@ -70,6 +78,14 @@ export function calculateTax(
   const netIncome = income - paye - acc - kiwiSaver - studentLoan;
 
   const periodicResults = {
+    hourly: {
+      grossIncome: income / (52 * 40), // Assuming 40-hour work week
+      netIncome: netIncome / (52 * 40),
+      paye: paye / (52 * 40),
+      acc: acc / (52 * 40),
+      kiwiSaver: kiwiSaver / (52 * 40),
+      studentLoan: studentLoan / (52 * 40),
+    },
     weekly: {
       grossIncome: income / 52,
       netIncome: netIncome / 52,
