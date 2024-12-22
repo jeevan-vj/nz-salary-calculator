@@ -1,5 +1,5 @@
 
-import { calculateTax, TaxCalculationResult } from './taxCalculator';
+import { calculateTax } from './taxCalculator';
 
 describe('calculateTax', () => {
   test('calculates tax correctly for income under $14,000', () => {
