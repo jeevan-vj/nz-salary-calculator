@@ -94,7 +94,6 @@ export default function InputForm({ onCalculate }: InputFormProps) {
         <motion.div
           className="space-y-2"
           variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
         >
           <label className="text-sm font-medium">Annual Income</label>
@@ -109,7 +108,6 @@ export default function InputForm({ onCalculate }: InputFormProps) {
         <motion.div
           className="flex items-center space-x-2"
           variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
         >
           <Switch
@@ -131,7 +129,6 @@ export default function InputForm({ onCalculate }: InputFormProps) {
           <motion.div
             className="space-y-2"
             variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           >
             <label className="text-sm font-medium">
@@ -151,7 +148,6 @@ export default function InputForm({ onCalculate }: InputFormProps) {
         <motion.div
           className="flex items-center space-x-2 space-y-2"
           variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
         >
           <Checkbox
@@ -166,7 +162,6 @@ export default function InputForm({ onCalculate }: InputFormProps) {
 
         <motion.div
           variants={itemVariants}
-          whileHover={{ scale: isValidIncome(income) ? 1.05 : 1 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
         >
           <Button
