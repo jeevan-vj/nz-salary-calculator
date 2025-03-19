@@ -4,19 +4,28 @@ import { useState, useRef } from 'react';
 import IncomeSourceForm from '../components/IncomeSourceForm';
 import ResultsDisplay from '../components/ResultsDisplay';
 import { calculateMultipleIncomeTax } from '../utils/multipleIncomeTaxCalculator';
-import { IncomeSource } from '../types/income';
-import { TaxCalculationResult } from '../utils/taxCalculator';
+import type { IncomeSource } from '../types/income';
+import type { TaxCalculationResult } from '../utils/taxCalculator';
 
 export default function MultipleIncomePage() {
   const [results, setResults] = useState<TaxCalculationResult | null>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   const handleCalculate = (sources: IncomeSource[]) => {
-    const result = calculateMultipleIncomeTax(sources);
-    setResults(result);
-    
-    if (window.innerWidth <= 768) {
-      resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    try {
+      if (!sources || sources.length === 0) {
+        setResults(null);
+        return;
+      }
+      const result = calculateMultipleIncomeTax(sources);
+      setResults(result);
+      
+      if (window.innerWidth <= 768) {
+        resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.error('Error calculating tax:', error);
+      setResults(null);
     }
   };
 
