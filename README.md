@@ -60,6 +60,8 @@ bun dev
 - [ ] Overtime and holiday pay calculations
 - [ ] Tax credit calculations
 - [ ] Different tax years comparison
+- [ ] Contractor vs. employee comparison tool
+- [ ] Dividend and investment income integration
 
 ### Advanced Salary Analysis
 - [ ] Salary comparison with industry averages
@@ -67,6 +69,10 @@ bun dev
 - [ ] Inflation impact calculator
 - [ ] Saving goals calculator
 - [ ] Net worth tracker
+- [ ] Salary progression simulator
+- [ ] Take-home pay optimization recommendations
+- [ ] International income tax comparison
+- [ ] Retirement planning with current salary
 
 ### KiwiSaver Enhancements
 - [ ] KiwiSaver growth projections
@@ -74,6 +80,10 @@ bun dev
 - [ ] First home withdrawal calculator
 - [ ] Different fund type comparisons
 - [ ] Government contribution calculations
+- [ ] Custom contribution scenarios
+- [ ] Fee impact analysis
+- [ ] Retirement income projections
+- [ ] Portfolio allocation optimization
 
 ### Export & Reporting
 - [ ] PDF report generation
@@ -81,6 +91,9 @@ bun dev
 - [ ] Save calculations history
 - [ ] Compare multiple scenarios
 - [ ] Data export in CSV/Excel
+- [ ] Scenario tagging and organization
+- [ ] Financial year planning calendar
+- [ ] Automated regular reports
 
 ### Visualization Improvements
 - [ ] User Preferences
@@ -89,6 +102,13 @@ bun dev
 - [ ] Personalized dashboard
 - [ ] User accounts integration
 - [ ] Calculation history
+- [ ] Interactive tax breakdown explorer
+- [ ] Income growth trajectory charts
+- [ ] Purchasing power visualization
+- [ ] Marginal tax rate analyzer
+- [ ] "Where your money goes" treemap
+- [ ] Time-to-financial-goal projections
+- [ ] Savings impact simulator
 
 ### Mobile & Accessibility
 - [ ] Screen reader optimizations
@@ -96,6 +116,10 @@ bun dev
 - [ ] High contrast mode
 - [ ] Font size controls
 - [ ] ARIA labels enhancement
+- [ ] Voice-guided calculations
+- [ ] One-handed mobile operation mode
+- [ ] Simplified view for seniors
+- [ ] Financial literacy tooltips
 
 ### Integration Features
 - [ ] Share results on social media
@@ -103,6 +127,10 @@ bun dev
 - [ ] Calendar reminders for tax dates
 - [ ] API endpoints for calculations
 - [ ] Webhook support
+- [ ] Open Banking data integration
+- [ ] Employer payroll system integration
+- [ ] IRD data synchronization
+- [ ] Financial advisor sharing tools
 
 ### Educational Content
 - [ ] Tax tips and guides
@@ -110,6 +138,10 @@ bun dev
 - [ ] FAQ section
 - [ ] Tax updates notifications
 - [ ] Video explanations
+- [ ] Personalized tax optimization tips
+- [ ] Life event financial impact calculators
+- [ ] Gamified financial literacy modules
+- [ ] Contextual financial insights
 
 ### Progressive Web App Features
 - [ ] Offline support
@@ -117,3 +149,17 @@ bun dev
 - [ ] App-like experience
 - [ ] Auto-updates
 - [ ] Install prompts
+
+### UI/UX Improvements
+- [ ] Smart defaults based on user profile
+- [ ] Progressive disclosure of advanced features
+- [ ] Calculation history with undo/redo
+- [ ] Input validation with real-time feedback
+- [ ] Multi-step guided calculation flows
+- [ ] Personalized dashboard with financial insights
+- [ ] Natural language input ("I earn $X per hour for Y hours...")
+- [ ] AI-powered financial recommendations
+- [ ] Contextual help integrated throughout calculator
+- [ ] Slider-based quick calculator for core use cases
+- [ ] Compare scenarios side-by-side
+- [ ] Salary change impact preview
