@@ -6,18 +6,29 @@ import { calculateTax, TaxCalculationResult } from './utils/taxCalculator';
 import InputForm from './components/InputFrom';
 import { TaxConfiguration } from './components/TaxConfiguration';
 import SalaryImpactPreview from './components/SalaryImpactPreview';
+import HourlyEarningsBreakdown from './components/HourlyEarningsBreakdown';
 
 export default function Home() {
   const resultsRef = useRef<HTMLDivElement>(null);
   const [results, setResults] = useState<TaxCalculationResult | null>(null);
+  const [isHourlyMode, setIsHourlyMode] = useState<boolean>(false);
+  const [hoursPerWeek, setHoursPerWeek] = useState<number>(40);
   const [formData, setFormData] = useState({
     income: 70000,
     kiwiSaverRate: 3,
     hasStudentLoan: false
   });
 
-  const handleCalculate = (income: number, kiwiSaverRate: number, hasStudentLoan: boolean) => {
+  const handleCalculate = (
+    income: number, 
+    kiwiSaverRate: number, 
+    hasStudentLoan: boolean,
+    isHourly?: boolean,
+    hoursPerWeekParam?: number
+  ) => {
     setFormData({ income, kiwiSaverRate, hasStudentLoan });
+    setIsHourlyMode(isHourly || false);
+    setHoursPerWeek(hoursPerWeekParam || 40);
     const result = calculateTax(income, kiwiSaverRate, hasStudentLoan);
     setResults(result);
     
@@ -46,6 +57,15 @@ export default function Home() {
         <TaxConfiguration />
         <div className="mt-8" ref={resultsRef}>
           <ResultsDisplay results={results} isLoading={false} />
+          {results && isHourlyMode && (
+            <div className="mt-6">
+              <HourlyEarningsBreakdown
+                hourlyRate={formData.income / (hoursPerWeek * 52)}
+                currentHoursPerWeek={hoursPerWeek}
+                results={results}
+              />
+            </div>
+          )}
           {results && (
             <SalaryImpactPreview 
               baseIncome={formData.income} 
