@@ -60,22 +60,22 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="grid gap-4"
         >
-          <h3 className="text-lg font-semibold">Tax Brackets (2023-2024)</h3>
+          <h3 className="text-lg font-semibold">Tax Brackets (2024-2025)</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label>$0 - $14,000</Label>
+              <Label>$0 - $15,600</Label>
               <div className="text-sm text-muted-foreground">Tax Rate: 10.5%</div>
             </div>
             <div>
-              <Label>$14,001 - $48,000</Label>
+              <Label>$15,601 - $53,500</Label>
               <div className="text-sm text-muted-foreground">Tax Rate: 17.5%</div>
             </div>
             <div>
-              <Label>$48,001 - $70,000</Label>
+              <Label>$53,501 - $78,100</Label>
               <div className="text-sm text-muted-foreground">Tax Rate: 30%</div>
             </div>
             <div>
-              <Label>$70,001 - $180,000</Label>
+              <Label>$78,101 - $180,000</Label>
               <div className="text-sm text-muted-foreground">Tax Rate: 33%</div>
             </div>
             <div>
@@ -94,8 +94,9 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="space-y-2">
-            <Label>ACC Levy Rate</Label>
-            <div className="text-sm text-muted-foreground">Current rate: 1.39%</div>
+            <Label>ACC Earners' Levy Rate (2024-25)</Label>
+            <div className="text-sm text-muted-foreground">Current rate: 1.67% ($1.67 per $100 of income)</div>
+            <div className="text-sm text-muted-foreground">Maximum annual levy: $2,551 (for income up to $152,791)</div>
           </div>
         </motion.div>
       </TabsContent>
@@ -108,10 +109,13 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="space-y-2">
-            <Label>Student Loan Repayment Rate</Label>
-            <div className="text-sm text-muted-foreground">Current rate: 12%</div>
+            <Label>Student Loan Repayment (2024-25)</Label>
+            <div className="text-sm text-muted-foreground">Repayment rate: 12% of income above threshold</div>
             <div className="text-sm text-muted-foreground">
-              Applies to income over $20,280 per year
+              Annual threshold: $24,128 (weekly: $464)
+            </div>
+            <div className="text-sm text-muted-foreground text-xs mt-2">
+              Note: Interest-free for NZ residents
             </div>
           </div>
         </motion.div>
