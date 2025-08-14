@@ -94,7 +94,7 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="space-y-2">
-            <Label>ACC Earners' Levy Rate (2024-25)</Label>
+            <Label>ACC Earners&apos; Levy Rate (2024-25)</Label>
             <div className="text-sm text-muted-foreground">Current rate: 1.67% ($1.67 per $100 of income)</div>
             <div className="text-sm text-muted-foreground">Maximum annual levy: $2,551 (for income up to $152,791)</div>
           </div>

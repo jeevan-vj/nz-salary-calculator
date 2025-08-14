@@ -83,6 +83,10 @@ export const calculateMultipleIncomeTax = (
     studentLoan: totalStudentLoan,
     hasStudentLoan: totalStudentLoan > 0,
     kiwiSaverRate: 3,
+    taxCode: 'M' as const,
+    effectiveTaxRate: totalIncome > 0 ? (totalTax / totalIncome) * 100 : 0,
+    currentTaxBracket: 0,
+    nextTaxBracket: undefined,
     weekly: {
       grossIncome: totalIncome / 52,
       netIncome: netIncome / 52,

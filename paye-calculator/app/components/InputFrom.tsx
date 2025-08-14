@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { event } from '../utils/gtag';
 import { Switch } from '@/components/ui/switch';
+import { TaxCode, TAX_CODES, suggestTaxCode, TaxCodeSuggestion } from '../utils/taxCalculator';
 
 type InputMode = 'annual' | 'hourly';
 
@@ -15,7 +16,8 @@ interface InputFormProps {
     kiwiSaverRate: number,
     hasStudentLoan: boolean,
     isHourly?: boolean,
-    hoursPerWeek?: number
+    hoursPerWeek?: number,
+    taxCode?: TaxCode
   ) => void;
 }
 
@@ -27,11 +29,24 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   const [kiwiSaverRate, setKiwiSaverRate] = useState<number>(3);
   const [hasStudentLoan, setHasStudentLoan] = useState<boolean>(false);
   const [includeKiwiSaver, setIncludeKiwiSaver] = useState<boolean>(true);
+  const [taxCode, setTaxCode] = useState<TaxCode>('M');
+  const [taxCodeSuggestion, setTaxCodeSuggestion] = useState<TaxCodeSuggestion | null>(null);
+  const [isManualTaxCode, setIsManualTaxCode] = useState<boolean>(false);
 
   const isValidIncome = (value: string) => {
     const num = Number(value);
     return value !== '' && !isNaN(num) && num >= 0;
   };
+
+  // Auto-suggest tax code when income or student loan status changes
+  useEffect(() => {
+    const currentIncome = inputMode === 'annual' ? Number(income) : Number(hourlyRate) * hoursPerWeek * 52;
+    if (currentIncome > 0 && !isManualTaxCode) {
+      const suggestion = suggestTaxCode(currentIncome, hasStudentLoan);
+      setTaxCodeSuggestion(suggestion);
+      setTaxCode(suggestion.taxCode);
+    }
+  }, [income, hourlyRate, hoursPerWeek, hasStudentLoan, inputMode, isManualTaxCode]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -90,7 +105,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
       const hourlyRateNumber = Number(hourlyRate) || 0;
       // Convert hourly to annual income
       const annualIncome = hourlyRateNumber * hoursPerWeek * 52;
-      onCalculate(annualIncome, kiwiSaverRateToUse, hasStudentLoan, true, hoursPerWeek);
+      onCalculate(annualIncome, kiwiSaverRateToUse, hasStudentLoan, true, hoursPerWeek, taxCode);
       event({
         action: 'calculate_salary',
         category: 'engagement',
@@ -99,7 +114,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
       });
     } else {
       const incomeNumber = Number(income) || 0;
-      onCalculate(incomeNumber, kiwiSaverRateToUse, hasStudentLoan, false);
+      onCalculate(incomeNumber, kiwiSaverRateToUse, hasStudentLoan, false, undefined, taxCode);
       event({
         action: 'calculate_salary',
         category: 'engagement',
@@ -196,6 +211,71 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             </div>
           </motion.div>
         )}
+
+        <motion.div
+          className="space-y-3"
+          variants={itemVariants}
+          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+        >
+          <div className="flex items-center justify-between">
+            <label className="text-sm font-medium">Tax Code</label>
+            {taxCodeSuggestion && !isManualTaxCode && (
+              <span className={`text-xs px-2 py-1 rounded-full ${
+                taxCodeSuggestion.confidence === 'high' 
+                  ? 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400'
+                  : taxCodeSuggestion.confidence === 'medium'
+                  ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400'
+                  : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400'
+              }`}>
+                Auto-suggested
+              </span>
+            )}
+          </div>
+          
+          <select
+            value={taxCode}
+            onChange={(e) => {
+              setTaxCode(e.target.value as TaxCode);
+              setIsManualTaxCode(true);
+            }}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+          >
+            {TAX_CODES.map((code) => (
+              <option key={code.code} value={code.code}>
+                {code.code} - {code.description}
+              </option>
+            ))}
+          </select>
+
+          {taxCodeSuggestion && (
+            <div className={`text-xs p-3 rounded-lg ${
+              taxCodeSuggestion.confidence === 'high' 
+                ? 'bg-green-50 border border-green-200 text-green-700 dark:bg-green-900/10 dark:border-green-800 dark:text-green-400'
+                : taxCodeSuggestion.confidence === 'medium'
+                ? 'bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-900/10 dark:border-blue-800 dark:text-blue-400'
+                : 'bg-yellow-50 border border-yellow-200 text-yellow-700 dark:bg-yellow-900/10 dark:border-yellow-800 dark:text-yellow-400'
+            }`}>
+              <div className="flex items-start space-x-2">
+                <span className="font-medium">
+                  {isManualTaxCode ? 'Previous suggestion:' : 'Recommended:'} {taxCodeSuggestion.taxCode}
+                </span>
+              </div>
+              <p className="mt-1">{taxCodeSuggestion.reason}</p>
+              {isManualTaxCode && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setTaxCode(taxCodeSuggestion.taxCode);
+                    setIsManualTaxCode(false);
+                  }}
+                  className="mt-2 text-xs underline hover:no-underline"
+                >
+                  Use suggested tax code
+                </button>
+              )}
+            </div>
+          )}
+        </motion.div>
 
         <motion.div
           className="flex items-center space-x-2"

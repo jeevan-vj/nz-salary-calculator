@@ -19,7 +19,6 @@ export default function HourlyEarningsBreakdown({
     const annualGross = weeklyGross * 52;
     
     // Calculate proportional deductions based on current results
-    const grossRatio = annualGross / results.grossIncome;
     
     return {
       hourly: hourlyRate,

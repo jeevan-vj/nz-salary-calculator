@@ -2,11 +2,14 @@
 
 import { useState, useRef } from 'react';
 import ResultsDisplay from './components/ResultsDisplay';
-import { calculateTax, TaxCalculationResult } from './utils/taxCalculator';
+import { calculateTax, TaxCalculationResult, TaxCode } from './utils/taxCalculator';
 import InputForm from './components/InputFrom';
 import { TaxConfiguration } from './components/TaxConfiguration';
 import SalaryImpactPreview from './components/SalaryImpactPreview';
 import HourlyEarningsBreakdown from './components/HourlyEarningsBreakdown';
+import SummaryCards from './components/SummaryCards';
+import TaxBracketProgress from './components/TaxBracketProgress';
+import IncomeVsDeductionsChart from './components/IncomeVsDeductionsChart';
 
 export default function Home() {
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -16,7 +19,8 @@ export default function Home() {
   const [formData, setFormData] = useState({
     income: 70000,
     kiwiSaverRate: 3,
-    hasStudentLoan: false
+    hasStudentLoan: false,
+    taxCode: 'M' as TaxCode
   });
 
   const handleCalculate = (
@@ -24,12 +28,13 @@ export default function Home() {
     kiwiSaverRate: number, 
     hasStudentLoan: boolean,
     isHourly?: boolean,
-    hoursPerWeekParam?: number
+    hoursPerWeekParam?: number,
+    taxCode?: TaxCode
   ) => {
-    setFormData({ income, kiwiSaverRate, hasStudentLoan });
+    setFormData({ income, kiwiSaverRate, hasStudentLoan, taxCode: taxCode || 'M' });
     setIsHourlyMode(isHourly || false);
     setHoursPerWeek(hoursPerWeekParam || 40);
-    const result = calculateTax(income, kiwiSaverRate, hasStudentLoan);
+    const result = calculateTax(income, kiwiSaverRate, hasStudentLoan, taxCode);
     setResults(result);
     
     // Scroll to results on mobile
@@ -53,28 +58,52 @@ export default function Home() {
           </p>
         </header>
         
-        <InputForm onCalculate={handleCalculate} />
-        <TaxConfiguration />
-        <div className="mt-8" ref={resultsRef}>
-          <ResultsDisplay results={results} isLoading={false} />
-          {results && isHourlyMode && (
-            <div className="mt-6">
-              <HourlyEarningsBreakdown
-                hourlyRate={formData.income / (hoursPerWeek * 52)}
-                currentHoursPerWeek={hoursPerWeek}
-                results={results}
-              />
+        <div className="grid lg:grid-cols-12 gap-6">
+          {/* Input Form */}
+          <div className="lg:col-span-4">
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 border sticky top-4">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                Tax Calculator
+              </h2>
+              <InputForm onCalculate={handleCalculate} />
             </div>
-          )}
-          {results && (
-            <SalaryImpactPreview 
-              baseIncome={formData.income} 
-              kiwiSaverRate={formData.kiwiSaverRate} 
-              hasStudentLoan={formData.hasStudentLoan} 
-              baseResults={results} 
-            />
-          )}
+          </div>
+
+          {/* Results */}
+          <div className="lg:col-span-8" ref={resultsRef}>
+            {results && <SummaryCards results={results} />}
+            
+            <div className="grid gap-6">
+              {results && (
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <ResultsDisplay results={results} isLoading={false} />
+                  <IncomeVsDeductionsChart results={results} />
+                </div>
+              )}
+              
+              {results && <TaxBracketProgress results={results} />}
+              
+              {results && isHourlyMode && (
+                <HourlyEarningsBreakdown
+                  hourlyRate={formData.income / (hoursPerWeek * 52)}
+                  currentHoursPerWeek={hoursPerWeek}
+                  results={results}
+                />
+              )}
+              
+              {results && (
+                <SalaryImpactPreview 
+                  baseIncome={formData.income} 
+                  kiwiSaverRate={formData.kiwiSaverRate} 
+                  hasStudentLoan={formData.hasStudentLoan} 
+                  baseResults={results} 
+                />
+              )}
+            </div>
+          </div>
         </div>
+        
+        <TaxConfiguration />
       </section>
 
       <section className="container mx-auto p-4 mt-12">
