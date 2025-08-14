@@ -1,4 +1,21 @@
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block certain paths that don't need indexing
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
 Sitemap: https://nzsalarycalculator.co.nz/sitemap.xml

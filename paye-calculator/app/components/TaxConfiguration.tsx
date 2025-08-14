@@ -130,7 +130,11 @@ export function TaxConfiguration() {
         >
           <div className="space-y-2">
             <Label>Secondary Tax Rate</Label>
-            <select className="w-full p-2 border rounded">
+            <select 
+              className="w-full p-2 border rounded" 
+              aria-label="Secondary Tax Rate"
+              title="Select secondary tax rate for additional income sources"
+            >
               <option value="0.105">10.5%</option>
               <option value="0.175">17.5%</option>
               <option value="0.30">30%</option>
