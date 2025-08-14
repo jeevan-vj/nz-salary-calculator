@@ -10,6 +10,8 @@ import HourlyEarningsBreakdown from './components/HourlyEarningsBreakdown';
 import SummaryCards from './components/SummaryCards';
 import TaxBracketProgress from './components/TaxBracketProgress';
 import IncomeVsDeductionsChart from './components/IncomeVsDeductionsChart';
+import ShareResults from './components/ShareResults';
+import CalculationHistory from './components/CalculationHistory';
 
 export default function Home() {
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -43,6 +45,16 @@ export default function Home() {
     }
   };
 
+  const handleLoadCalculation = (loadedResults: TaxCalculationResult) => {
+    setFormData({
+      income: loadedResults.grossIncome,
+      kiwiSaverRate: loadedResults.kiwiSaverRate,
+      hasStudentLoan: loadedResults.hasStudentLoan,
+      taxCode: loadedResults.taxCode
+    });
+    setResults(loadedResults);
+  };
+
   return (
     <>
       <section className="container mx-auto p-4 space-y-6">
@@ -61,16 +73,22 @@ export default function Home() {
         <div className="grid lg:grid-cols-12 gap-6">
           {/* Input Form */}
           <div className="lg:col-span-4">
-            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 border sticky top-4">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Tax Calculator
-              </h2>
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-4 lg:p-6 border lg:sticky lg:top-4">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg lg:text-xl font-semibold text-gray-900 dark:text-white">
+                  Tax Calculator
+                </h2>
+                <CalculationHistory 
+                  onLoadCalculation={handleLoadCalculation} 
+                  currentResults={results}
+                />
+              </div>
               <InputForm onCalculate={handleCalculate} />
             </div>
           </div>
 
           {/* Results */}
-          <div className="lg:col-span-8" ref={resultsRef}>
+          <div className="lg:col-span-8 space-y-6" ref={resultsRef}>
             {results && <SummaryCards results={results} />}
             
             <div className="grid gap-6">
@@ -82,6 +100,15 @@ export default function Home() {
               )}
               
               {results && <TaxBracketProgress results={results} />}
+              
+              {results && (
+                <div className="grid md:grid-cols-2 gap-6">
+                  <ShareResults results={results} />
+                  <div className="md:col-span-1">
+                    {/* Placeholder for future components */}
+                  </div>
+                </div>
+              )}
               
               {results && isHourlyMode && (
                 <HourlyEarningsBreakdown

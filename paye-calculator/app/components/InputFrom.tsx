@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { event } from '../utils/gtag';
 import { Switch } from '@/components/ui/switch';
 import { TaxCode, TAX_CODES, suggestTaxCode, TaxCodeSuggestion } from '../utils/taxCalculator';
+import { parseSalaryInput } from '../utils/salaryParser';
+import SmartSalaryInput from './SmartSalaryInput';
 
 type InputMode = 'annual' | 'hourly';
 
@@ -34,13 +35,18 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   const [isManualTaxCode, setIsManualTaxCode] = useState<boolean>(false);
 
   const isValidIncome = (value: string) => {
-    const num = Number(value);
-    return value !== '' && !isNaN(num) && num >= 0;
+    const parsed = parseSalaryInput(value);
+    return parsed.isValid;
   };
 
   // Auto-suggest tax code when income or student loan status changes
   useEffect(() => {
-    const currentIncome = inputMode === 'annual' ? Number(income) : Number(hourlyRate) * hoursPerWeek * 52;
+    const parsedIncome = parseSalaryInput(income);
+    const parsedHourlyRate = parseSalaryInput(hourlyRate);
+    const currentIncome = inputMode === 'annual' 
+      ? (parsedIncome.isValid ? parsedIncome.value : 0)
+      : (parsedHourlyRate.isValid ? parsedHourlyRate.value * hoursPerWeek * 52 : 0);
+    
     if (currentIncome > 0 && !isManualTaxCode) {
       const suggestion = suggestTaxCode(currentIncome, hasStudentLoan);
       setTaxCodeSuggestion(suggestion);
@@ -102,7 +108,8 @@ export default function InputForm({ onCalculate }: InputFormProps) {
     const kiwiSaverRateToUse = includeKiwiSaver ? kiwiSaverRate : 0;
     
     if (inputMode === 'hourly') {
-      const hourlyRateNumber = Number(hourlyRate) || 0;
+      const parsedHourlyRate = parseSalaryInput(hourlyRate);
+      const hourlyRateNumber = parsedHourlyRate.isValid ? parsedHourlyRate.value : 0;
       // Convert hourly to annual income
       const annualIncome = hourlyRateNumber * hoursPerWeek * 52;
       onCalculate(annualIncome, kiwiSaverRateToUse, hasStudentLoan, true, hoursPerWeek, taxCode);
@@ -113,7 +120,8 @@ export default function InputForm({ onCalculate }: InputFormProps) {
         value: hourlyRateNumber,
       });
     } else {
-      const incomeNumber = Number(income) || 0;
+      const parsedIncome = parseSalaryInput(income);
+      const incomeNumber = parsedIncome.isValid ? parsedIncome.value : 0;
       onCalculate(incomeNumber, kiwiSaverRateToUse, hasStudentLoan, false, undefined, taxCode);
       event({
         action: 'calculate_salary',
@@ -160,17 +168,18 @@ export default function InputForm({ onCalculate }: InputFormProps) {
 
         {inputMode === 'annual' ? (
           <motion.div
-            className="space-y-2"
             variants={itemVariants}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           >
-            <label className="text-sm font-medium">Annual Income</label>
-            <Input
-              type="number"
+            <SmartSalaryInput
               value={income}
-              onChange={(e) => setIncome(e.target.value)}
-              pattern="[0-9]*"
-              placeholder="e.g., 70000"
+              onChange={setIncome}
+              label="Annual Income"
+              placeholder="e.g., 70000, 70k, $70,000"
+              min={20000}
+              max={300000}
+              step={1000}
+              showSlider={true}
             />
           </motion.div>
         ) : (
@@ -179,17 +188,17 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             variants={itemVariants}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           >
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Hourly Rate</label>
-              <Input
-                type="number"
-                value={hourlyRate}
-                onChange={(e) => setHourlyRate(e.target.value)}
-                pattern="[0-9]*"
-                placeholder="e.g., 35"
-                step="0.01"
-              />
-            </div>
+            <SmartSalaryInput
+              value={hourlyRate}
+              onChange={setHourlyRate}
+              label="Hourly Rate"
+              placeholder="e.g., 35, $35"
+              min={15}
+              max={200}
+              step={1}
+              showSlider={true}
+            />
+            
             <div className="space-y-2">
               <label className="text-sm font-medium">
                 Hours per week: {hoursPerWeek}
