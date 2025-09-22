@@ -144,6 +144,68 @@ export default function Home() {
         <TaxConfiguration />
       </section>
 
+      {/* Related Tools Section */}
+      <section className="container mx-auto p-4 mt-8">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Related Salary & Tax Calculators
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Comprehensive tools to help you understand your finances in New Zealand
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="/hourly-rate-calculator" className="block bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border">
+            <div className="text-center">
+              <div className="text-3xl mb-3">⏰</div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Hourly Rate Calculator
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Convert your annual salary to hourly pay and understand overtime rates
+              </p>
+            </div>
+          </a>
+          
+          <a href="/kiwisaver-calculator" className="block bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border">
+            <div className="text-center">
+              <div className="text-3xl mb-3">🏦</div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                KiwiSaver Calculator
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Calculate retirement savings and see how KiwiSaver affects your pay
+              </p>
+            </div>
+          </a>
+          
+          <a href="/multiple-income" className="block bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border">
+            <div className="text-center">
+              <div className="text-3xl mb-3">💼</div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Multiple Income Calculator
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Calculate tax from multiple jobs and income sources
+              </p>
+            </div>
+          </a>
+          
+          <a href="/salary-guide" className="block bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border">
+            <div className="text-center">
+              <div className="text-3xl mb-3">📊</div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                NZ Salary Guide
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Average salaries by profession and comprehensive tax information
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
       <section className="container mx-auto p-4 mt-12" itemScope itemType="https://schema.org/AboutPage">
         <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6" itemProp="headline">
@@ -155,14 +217,15 @@ export default function Home() {
                 Accurate PAYE Tax Calculations
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Our calculator uses the latest IRD tax rates and brackets for the 2024/2025 tax year. Get precise calculations for PAYE tax, ACC levies, and net take-home pay.
+                Our calculator uses the latest IRD tax rates and brackets for the 2024/2025 tax year. Get precise calculations for PAYE tax, ACC levies, and net take-home pay. 
+                <a href="/salary-guide" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Learn more about NZ tax brackets</a>.
               </p>
               
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 KiwiSaver & Student Loan Support
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Calculate KiwiSaver contributions (3%, 4%, 6%, 8%, or 10%) and student loan repayments based on current thresholds and rates.
+                Calculate <a href="/kiwisaver-calculator" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">KiwiSaver contributions</a> (3%, 4%, 6%, 8%, or 10%) and student loan repayments based on current thresholds and rates.
               </p>
             </div>
             
@@ -171,14 +234,14 @@ export default function Home() {
                 Multiple Pay Period Calculations
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                View your salary breakdown across annual, monthly, fortnightly, weekly, daily, and hourly rates to understand your income across different time periods.
+                View your salary breakdown across annual, monthly, fortnightly, weekly, daily, and <a href="/hourly-rate-calculator" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">hourly rates</a> to understand your income across different time periods. Perfect for comparing job offers and understanding your true earning power.
               </p>
               
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Free & Always Up-to-Date
+                Multiple Income Source Support
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Completely free to use with no registration required. We regularly update our calculator to reflect the latest New Zealand tax rates and regulations.
+                Need to calculate tax from multiple jobs? Use our <a href="/multiple-income" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">multiple income calculator</a> to accurately determine your total tax obligations and take-home pay from various income sources.
               </p>
             </div>
           </div>

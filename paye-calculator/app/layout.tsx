@@ -4,6 +4,7 @@ import { ThemeProvider } from './theme/ThemeProvider';
 import Header from './components/Header';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import Footer from './components/Footer';
+import BreadcrumbNavigation from './components/BreadcrumbNavigation';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
@@ -197,6 +198,7 @@ export default function RootLayout({
       <body className="transition-colors duration-200">
         <ThemeProvider>
           <Header />
+          <BreadcrumbNavigation />
           <main className="max-w-7xl mx-auto p-4">{children}</main>
           <Footer />
         </ThemeProvider>
