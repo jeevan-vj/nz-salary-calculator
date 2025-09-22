@@ -18,4 +18,4 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemap location
-Sitemap: https://nzsalarycalculator.co.nz/sitemap.xml
+Sitemap: https://nzsalarycalculator.iamjeevan.com/sitemap.xml

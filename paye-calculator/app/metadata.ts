@@ -5,11 +5,11 @@ export const siteMetadata = {
   openGraph: {
     type: 'website',
     locale: 'en_NZ',
-    url: 'https://nzsalarycalculator.co.nz',
+    url: 'https://nzsalarycalculator.iamjeevan.com',
     siteName: 'NZ Salary Calculator',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'NZ Salary Calculator'

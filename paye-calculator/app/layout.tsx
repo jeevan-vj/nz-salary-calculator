@@ -23,22 +23,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_NZ',
-    url: 'https://nzsalarycalculator.co.nz',
+    url: 'https://nzsalarycalculator.iamjeevan.com',
     siteName: 'NZ Salary Calculator',
     title: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
     description: 'Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates.',
     images: [{
-      url: '/og-image.png',
+      url: '/og-image.svg',
       width: 1200,
       height: 630,
-      alt: 'New Zealand Salary Calculator',
+      alt: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
     }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
     description: 'Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates.',
-    images: ['/og-image.png'],
+    images: ['/og-image.svg'],
   },
   robots: {
     index: true,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://nzsalarycalculator.co.nz',
+    canonical: 'https://nzsalarycalculator.iamjeevan.com',
   },
 };
 
@@ -77,7 +77,7 @@ export default function RootLayout({
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="1 days" />
-        <link rel="canonical" href="https://nzsalarycalculator.co.nz" />
+        <link rel="canonical" href="https://nzsalarycalculator.iamjeevan.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
@@ -91,7 +91,7 @@ export default function RootLayout({
                 "name": "New Zealand Salary Calculator",
                 "applicationCategory": "FinanceApplication",
                 "operatingSystem": "All",
-                "url": "https://nzsalarycalculator.co.nz",
+                "url": "https://nzsalarycalculator.iamjeevan.com",
                 "description": "Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates. Accurate NZ income tax calculator with latest IRD rates.",
                 "offers": {
                   "@type": "Offer",
@@ -107,14 +107,20 @@ export default function RootLayout({
                   "name": "NZ Salary Calculator"
                 },
                 "inLanguage": "en-NZ",
-                "dateModified": "2024-08-14",
+                "dateModified": "2024-09-22",
+                "datePublished": "2024-01-01",
+                "lastReviewed": "2024-09-22",
                 "featureList": [
                   "PAYE Tax Calculation",
                   "Take-home Pay Calculation", 
                   "KiwiSaver Contribution Calculator",
                   "Student Loan Repayment Calculator",
                   "Hourly Rate Calculator",
-                  "Annual vs Weekly vs Fortnightly Pay Breakdown"
+                  "Annual vs Weekly vs Fortnightly Pay Breakdown",
+                  "Multiple Income Source Calculator",
+                  "Tax Bracket Analysis",
+                  "IRD Compliant Tax Rates",
+                  "ACC Levy Calculation"
                 ],
                 "audience": {
                   "@type": "Audience",
@@ -128,7 +134,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "name": "NZ Salary Calculator",
-                "url": "https://nzsalarycalculator.co.nz",
+                "url": "https://nzsalarycalculator.iamjeevan.com",
                 "description": "Providing accurate and free salary calculations for New Zealand workers",
                 "areaServed": {
                   "@type": "Country",

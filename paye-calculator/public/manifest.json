@@ -1,22 +1,27 @@
 
 {
-  "name": "NZ Salary Calculator",
-  "short_name": "NZ PAYE",
-  "description": "New Zealand PAYE Tax Calculator",
+  "name": "New Zealand Salary Calculator - PAYE Tax Calculator 2024/2025",
+  "short_name": "NZ PAYE Calc",
+  "description": "Free New Zealand PAYE tax calculator. Calculate take-home pay, KiwiSaver, student loans, and hourly rates with the most accurate NZ tax calculator.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#1e3a8a",
+  "categories": ["finance", "productivity"],
+  "lang": "en-NZ",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/icon-512x512.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
