@@ -1,14 +1,15 @@
 import { writeFileSync } from 'fs';
 import { format } from 'date-fns';
 
-const domain = 'https://nzsalarycalculator.co.nz'; // Replace with your actual domain
+const domain = 'https://nzsalarycalculator.iamjeevan.com';
 
 const routes = [
   '/',
-  '/calculator',
-  '/about',
-  '/privacy-policy',
-  '/terms'
+  '/paye-calculator',
+  '/hourly-rate-calculator',
+  '/kiwisaver-calculator',
+  '/multiple-income',
+  '/salary-guide'
 ];
 
 function generateSitemap() {
