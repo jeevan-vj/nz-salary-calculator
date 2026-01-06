@@ -65,17 +65,17 @@ export default function ResultsDisplay({
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="space-y-4 p-6 border rounded-lg bg-card text-card-foreground"
+        className="space-y-5 p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-800 rounded-xl bg-card text-card-foreground shadow-lg hover:shadow-xl transition-shadow duration-300"
       >
         <motion.div
           variants={itemVariants}
-          className="flex justify-between items-center"
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
         >
-          <h2 className="text-2xl font-bold">Your Tax Breakdown</h2>
+          <h2 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">Your Tax Breakdown</h2>
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value as PayPeriod)}
-            className="form-select w-auto"
+            className="form-select w-full sm:w-auto min-w-[160px]"
           >
             <option value="yearly">Yearly</option>
             <option value="monthly">Monthly</option>
@@ -85,7 +85,7 @@ export default function ResultsDisplay({
           </select>
         </motion.div>
 
-        <div className="grid gap-2">
+        <div className="grid gap-3">
           <motion.div variants={itemVariants} className="flex justify-between">
             <span>Gross Income:</span>
             <motion.span

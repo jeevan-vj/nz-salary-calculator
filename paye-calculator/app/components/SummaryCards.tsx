@@ -75,7 +75,7 @@ export default function SummaryCards({ results }: SummaryCardsProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
     >
       {cards.map((card) => {
         const Icon = card.icon;
@@ -83,11 +83,12 @@ export default function SummaryCards({ results }: SummaryCardsProps) {
           <motion.div
             key={card.title}
             variants={cardVariants}
-            className={`relative overflow-hidden rounded-lg border ${card.bgColor} p-6`}
+            whileHover={{ scale: 1.02, y: -4 }}
+            className={`relative overflow-hidden rounded-xl border-2 ${card.bgColor} p-6 shadow-md hover:shadow-xl transition-all duration-300`}
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
                   {card.title}
                 </p>
                 <motion.p
@@ -95,7 +96,7 @@ export default function SummaryCards({ results }: SummaryCardsProps) {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-gray-900 dark:text-white"
+                  className="text-3xl font-bold text-gray-900 dark:text-white mb-2"
                 >
                   ${card.value.toLocaleString('en-NZ', { 
                     minimumFractionDigits: 2, 
