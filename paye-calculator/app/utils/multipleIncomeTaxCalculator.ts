@@ -41,33 +41,34 @@ export const calculateMultipleIncomeTax = (
     totalIncome += yearlyAmount;
 
     // Calculate tax based on whether it's primary or secondary income
+    // Tax brackets effective 1 April 2025
     if (index === 0) {
       // Primary income tax calculation
-      if (yearlyAmount <= 14000) {
+      if (yearlyAmount <= 15600) {
         totalTax += yearlyAmount * 0.105;
-      } else if (yearlyAmount <= 48000) {
-        totalTax += 14000 * 0.105 + (yearlyAmount - 14000) * 0.175;
-      } else if (yearlyAmount <= 70000) {
-        totalTax += 14000 * 0.105 + 34000 * 0.175 + (yearlyAmount - 48000) * 0.30;
+      } else if (yearlyAmount <= 53500) {
+        totalTax += 15600 * 0.105 + (yearlyAmount - 15600) * 0.175;
+      } else if (yearlyAmount <= 78100) {
+        totalTax += 15600 * 0.105 + 37900 * 0.175 + (yearlyAmount - 53500) * 0.30;
       } else if (yearlyAmount <= 180000) {
-        totalTax += 14000 * 0.105 + 34000 * 0.175 + 22000 * 0.30 + (yearlyAmount - 70000) * 0.33;
+        totalTax += 15600 * 0.105 + 37900 * 0.175 + 24600 * 0.30 + (yearlyAmount - 78100) * 0.33;
       } else {
-        totalTax += 14000 * 0.105 + 34000 * 0.175 + 22000 * 0.30 + 110000 * 0.33 + (yearlyAmount - 180000) * 0.39;
+        totalTax += 15600 * 0.105 + 37900 * 0.175 + 24600 * 0.30 + 101900 * 0.33 + (yearlyAmount - 180000) * 0.39;
       }
     } else {
       // Secondary income - flat rate based on total income
       const totalSoFar = totalIncome - yearlyAmount;
-      if (totalSoFar <= 14000) totalTax += yearlyAmount * 0.105;
-      else if (totalSoFar <= 48000) totalTax += yearlyAmount * 0.175;
-      else if (totalSoFar <= 70000) totalTax += yearlyAmount * 0.30;
+      if (totalSoFar <= 15600) totalTax += yearlyAmount * 0.105;
+      else if (totalSoFar <= 53500) totalTax += yearlyAmount * 0.175;
+      else if (totalSoFar <= 78100) totalTax += yearlyAmount * 0.30;
       else if (totalSoFar <= 180000) totalTax += yearlyAmount * 0.33;
       else totalTax += yearlyAmount * 0.39;
     }
 
     // Calculate other deductions
-    totalAcc += yearlyAmount * 0.0139;
+    totalAcc += yearlyAmount * 0.0167; // ACC earners levy 2025-26: $1.67 per $100
     totalKiwiSaver += yearlyAmount * 0.03; // Default KiwiSaver rate
-    if (totalIncome > 20280) { // Student loan threshold
+    if (totalIncome > 24128) { // Student loan threshold 2025-26
       totalStudentLoan += yearlyAmount * 0.12;
     }
   });

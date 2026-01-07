@@ -35,7 +35,7 @@ export function suggestTaxCode(
   isPrimaryJob: boolean = true
 ): TaxCodeSuggestion {
   // For very low incomes (likely part-time or casual work)
-  if (income < 15000) {
+  if (income < 15600) {
     if (isPrimaryJob) {
       return {
         taxCode: hasStudentLoan ? 'ML' : 'M',
@@ -47,14 +47,14 @@ export function suggestTaxCode(
     } else {
       return {
         taxCode: 'SB',
-        reason: 'Low income secondary job - basic secondary rate (17.5%) recommended',
+        reason: 'Low income secondary job - basic secondary rate (10.5%) recommended',
         confidence: 'high'
       };
     }
   }
 
   // For moderate incomes (most common case)
-  if (income >= 15000 && income <= 70000) {
+  if (income >= 15600 && income <= 78100) {
     if (isPrimaryJob) {
       return {
         taxCode: hasStudentLoan ? 'ML' : 'M',
@@ -64,16 +64,25 @@ export function suggestTaxCode(
         confidence: 'high'
       };
     } else {
-      return {
-        taxCode: 'SB',
-        reason: 'Secondary income in moderate range - 17.5% flat rate appropriate',
-        confidence: 'high'
-      };
+      // Use appropriate secondary rate based on income level
+      if (income <= 53500) {
+        return {
+          taxCode: 'S',
+          reason: 'Secondary income in moderate range - 17.5% flat rate appropriate',
+          confidence: 'high'
+        };
+      } else {
+        return {
+          taxCode: 'SH',
+          reason: 'Secondary income in upper moderate range - 30% flat rate prevents under-withholding',
+          confidence: 'high'
+        };
+      }
     }
   }
 
   // For higher incomes (above average NZ salary)
-  if (income > 70000 && income <= 120000) {
+  if (income > 78100 && income <= 120000) {
     if (isPrimaryJob) {
       return {
         taxCode: hasStudentLoan ? 'ML' : 'M',
@@ -175,7 +184,7 @@ export function calculateTax(
   hasStudentLoan: boolean,
   taxCode: TaxCode = 'M'
 ): TaxCalculationResult {
-  // Tax brackets for 2024-2025 (effective 31 July 2024)
+  // Tax brackets for 2025-2026 (effective 1 April 2025)
   const taxBrackets = [
     { threshold: 15600, rate: 0.105 },
     { threshold: 53500, rate: 0.175 },
@@ -228,9 +237,9 @@ export function calculateTax(
 
   const effectiveTaxRate = income > 0 ? (paye / income) * 100 : 0;
 
-  const acc = income * 0.0167; // ACC earners levy rate 2024-25: $1.67 per $100
+  const acc = income * 0.0167; // ACC earners levy rate 2025-26: $1.67 per $100
   const kiwiSaver = income * (kiwiSaverRate / 100);
-  // Student loan repayment: 12% of income over $24,128 threshold (2024-25)
+  // Student loan repayment: 12% of income over $24,128 threshold (2025-26)
   const studentLoanThreshold = 24128;
   const studentLoan = hasStudentLoan && income > studentLoanThreshold 
     ? (income - studentLoanThreshold) * 0.12 
