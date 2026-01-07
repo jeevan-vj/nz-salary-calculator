@@ -13,6 +13,7 @@ import TaxBracketProgress from './components/TaxBracketProgress';
 import IncomeVsDeductionsChart from './components/IncomeVsDeductionsChart';
 import ShareResults from './components/ShareResults';
 import CalculationHistory from './components/CalculationHistory';
+import SEOContent from './components/SEOContent';
 
 export default function Home() {
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -525,6 +526,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* SEO Content Section */}
+      <SEOContent />
     </>
   );
 }

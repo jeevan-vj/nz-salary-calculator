@@ -3,15 +3,21 @@ import Link from 'next/link';
 
 export default function SalaryGuidePage() {
   return (
-    <main className="container mx-auto px-4 py-8 max-w-4xl">
+    <main className="container mx-auto px-4 py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
       <div className="mb-8">
         
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          New Zealand Salary Guide 2024/2025
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4" itemProp="headline">
+          New Zealand Salary Guide 2026 - Tax Rates, PAYE & Take-Home Pay
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300">
-          Everything you need to know about salaries, tax rates, and take-home pay in New Zealand
+        <p className="text-xl text-gray-600 dark:text-gray-300" itemProp="description">
+          Complete guide to NZ salaries, IRD tax rates, PAYE calculations, and take-home pay for 2025/2026. 
+          Updated with latest tax brackets and average salaries by industry.
         </p>
+        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+          <span itemProp="datePublished" content="2024-01-01">Published: January 2024</span>
+          <span className="mx-2">•</span>
+          <span itemProp="dateModified" content="2026-01-07">Updated: January 2026</span>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 mb-8">

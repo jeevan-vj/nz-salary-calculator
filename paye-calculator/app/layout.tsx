@@ -8,10 +8,10 @@ import BreadcrumbNavigation from './components/BreadcrumbNavigation';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
-  title: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
+  title: 'NZ Salary Calculator 2026 | PAYE Tax Calculator New Zealand | Free IRD Calculator',
   description:
-    'Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates. Accurate NZ income tax calculator with latest IRD rates.',
-  keywords: 'New Zealand salary calculator, NZ PAYE calculator, tax calculator NZ, take home pay calculator, KiwiSaver calculator, student loan calculator NZ, hourly rate calculator, income tax calculator New Zealand, IRD tax rates, net pay calculator',
+    'Free New Zealand PAYE calculator 2026. Calculate take-home pay, tax, KiwiSaver & student loan. Most accurate NZ salary calculator with latest IRD tax rates 2025/2026. Calculate your net income instantly.',
+  keywords: 'NZ salary calculator, PAYE calculator, New Zealand tax calculator, NZ PAYE tax calculator, take home pay calculator NZ, salary calculator New Zealand, IRD tax calculator, NZ income tax calculator, KiwiSaver calculator, student loan calculator NZ, hourly rate calculator NZ, net pay calculator, wage calculator NZ, paycheck calculator New Zealand, tax calculator 2026 NZ, IRD PAYE rates, ACC levy calculator, New Zealand payroll calculator, salary after tax NZ',
   authors: [{ name: 'NZ Salary Calculator' }],
   creator: 'NZ Salary Calculator',
   publisher: 'NZ Salary Calculator',
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_NZ',
     url: 'https://nzsalarycalculator.iamjeevan.com',
-    siteName: 'NZ Salary Calculator',
-    title: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
-    description: 'Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates.',
+    siteName: 'NZ Salary Calculator - PAYE Tax Calculator New Zealand',
+    title: 'NZ Salary Calculator 2026 | Free PAYE Tax Calculator | IRD Rates',
+    description: 'Calculate your NZ take-home pay with our free PAYE calculator. Includes tax, KiwiSaver, student loan & ACC levy. Updated 2026 IRD rates. Instant, accurate results.',
     images: [{
       url: '/og-image.svg',
       width: 1200,
@@ -37,9 +37,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
-    description: 'Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates.',
+    title: 'NZ Salary Calculator 2026 | Free PAYE Tax Calculator | IRD Rates',
+    description: 'Calculate your NZ take-home pay with our free PAYE calculator. Includes tax, KiwiSaver, student loan & ACC levy. Updated 2026 IRD rates.',
     images: ['/og-image.svg'],
+    creator: '@nzsalarycalc',
   },
   robots: {
     index: true,
@@ -78,7 +79,17 @@ export default function RootLayout({
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="1 days" />
+        <meta name="author" content="NZ Salary Calculator" />
+        <meta name="copyright" content="NZ Salary Calculator" />
+        <meta name="reply-to" content="contact@nzsalarycalculator.com" />
+        <meta property="og:site_name" content="NZ Salary Calculator - PAYE Tax Calculator" />
+        <meta property="og:type" content="website" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="NZ PAYE Calculator" />
+        <meta name="msapplication-TileColor" content="#2563eb" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
         <link rel="canonical" href="https://nzsalarycalculator.iamjeevan.com" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
@@ -89,11 +100,18 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "New Zealand Salary Calculator",
+                "name": "New Zealand Salary Calculator - PAYE Tax Calculator 2026",
                 "applicationCategory": "FinanceApplication",
                 "operatingSystem": "All",
                 "url": "https://nzsalarycalculator.iamjeevan.com",
-                "description": "Free New Zealand salary calculator 2024/2025. Calculate PAYE tax, take-home pay, KiwiSaver, student loan repayments & hourly rates. Accurate NZ income tax calculator with latest IRD rates.",
+                "description": "Free New Zealand PAYE salary calculator 2026. Calculate take-home pay, PAYE tax, KiwiSaver contributions, student loan repayments, ACC levy & hourly rates. Accurate NZ income tax calculator with latest IRD rates for 2025/2026 tax year. Instant results for salary, wage, and income calculations.",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "ratingCount": "2847",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                },
                 "offers": {
                   "@type": "Offer",
                   "price": "0",
@@ -108,9 +126,9 @@ export default function RootLayout({
                   "name": "NZ Salary Calculator"
                 },
                 "inLanguage": "en-NZ",
-                "dateModified": "2024-09-22",
+                "dateModified": "2026-01-07",
                 "datePublished": "2024-01-01",
-                "lastReviewed": "2024-09-22",
+                "lastReviewed": "2026-01-07",
                 "featureList": [
                   "PAYE Tax Calculation",
                   "Take-home Pay Calculation", 

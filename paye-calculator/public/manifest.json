@@ -1,15 +1,31 @@
 
 {
-  "name": "New Zealand Salary Calculator - PAYE Tax Calculator 2024/2025",
-  "short_name": "NZ PAYE Calc",
-  "description": "Free New Zealand PAYE tax calculator. Calculate take-home pay, KiwiSaver, student loans, and hourly rates with the most accurate NZ tax calculator.",
+  "name": "NZ Salary Calculator 2026 - PAYE Tax Calculator New Zealand",
+  "short_name": "NZ PAYE Calculator",
+  "description": "Free New Zealand PAYE tax calculator 2026. Calculate take-home pay, tax, KiwiSaver, student loans with the most accurate NZ salary calculator. Instant IRD-compliant results.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#1e3a8a",
-  "categories": ["finance", "productivity"],
+  "theme_color": "#2563eb",
+  "categories": ["finance", "productivity", "business"],
   "lang": "en-NZ",
-  "orientation": "portrait-primary",
+  "dir": "ltr",
+  "orientation": "any",
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -22,6 +38,29 @@
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "PAYE Calculator",
+      "short_name": "PAYE",
+      "description": "Calculate PAYE tax and take-home pay",
+      "url": "/paye-calculator",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Hourly Rate",
+      "short_name": "Hourly",
+      "description": "Calculate hourly rate from annual salary",
+      "url": "/hourly-rate-calculator",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "KiwiSaver",
+      "short_name": "KiwiSaver",
+      "description": "Calculate KiwiSaver contributions",
+      "url": "/kiwisaver-calculator",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
     }
   ]
 }

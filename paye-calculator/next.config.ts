@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizeCss: true,
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -39,6 +40,10 @@ const nextConfig: NextConfig = {
         {
           key: 'Referrer-Policy',
           value: 'strict-origin-when-cross-origin'
+        },
+        {
+          key: 'Permissions-Policy',
+          value: 'camera=(), microphone=(), geolocation=()'
         }
       ]
     },
@@ -51,7 +56,15 @@ const nextConfig: NextConfig = {
         }
       ]
     }
-  ]
+  ],
+  async rewrites() {
+    return [
+      {
+        source: '/robots.txt',
+        destination: '/api/robots'
+      }
+    ]
+  }
 };
 
 export default nextConfig;
