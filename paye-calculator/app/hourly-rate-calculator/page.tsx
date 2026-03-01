@@ -7,15 +7,39 @@ export default function HourlyRateCalculatorPage() {
       <div className="mb-8">
         
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Hourly Rate Calculator New Zealand 2024/2025
+          Hourly Rate Calculator NZ & Minimum Wage Calculator 2026
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-          Convert your annual salary to hourly pay and understand your true hourly earning power
+          Convert your annual salary to hourly pay, calculate minimum wage NZ take-home pay, and understand your true hourly earning power
         </p>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6 mb-6 border border-yellow-200 dark:border-yellow-800">
+            <h2 className="text-xl font-semibold text-yellow-900 dark:text-yellow-100 mb-4">
+              💰 Minimum Wage NZ Calculator
+            </h2>
+            <p className="text-yellow-800 dark:text-yellow-200 mb-3">
+              The current <strong>minimum wage NZ</strong> is <strong>$23.15 per hour</strong> (as of April 2024). 
+              At 40 hours per week, this equals approximately <strong>$48,152 per year</strong> before tax.
+            </p>
+            <div className="bg-yellow-100 dark:bg-yellow-900/40 rounded p-4 mb-4">
+              <p className="text-yellow-900 dark:text-yellow-100 font-medium">Minimum Wage Take-Home Pay (40 hrs/week):</p>
+              <ul className="text-yellow-800 dark:text-yellow-200 text-sm mt-2 space-y-1">
+                <li>• Gross: $48,152/year ($926/week)</li>
+                <li>• After PAYE Tax: ~$41,500/year (~$798/week)</li>
+                <li>• After KiwiSaver (3%): ~$40,055/year (~$770/week)</li>
+              </ul>
+            </div>
+            <Link 
+              href="/" 
+              className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors"
+            >
+              Calculate Minimum Wage Take-Home Pay
+            </Link>
+          </div>
+
           <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mb-8">
             <h2 className="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-4">
               🧮 Use Our Full Salary Calculator
@@ -23,12 +47,12 @@ export default function HourlyRateCalculatorPage() {
             <p className="text-blue-800 dark:text-blue-200 mb-4">
               Get detailed hourly rate calculations including tax deductions, KiwiSaver, and take-home pay
             </p>
-            <a 
+            <Link 
               href="/" 
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Calculate Hourly Rate with Taxes
-            </a>
+            </Link>
           </div>
 
           <article className="prose prose-lg dark:prose-invert max-w-none">
@@ -89,7 +113,7 @@ export default function HourlyRateCalculatorPage() {
             <ul>
               <li><strong>Technology:</strong> Generally higher hourly rates ($30-70/hour)</li>
               <li><strong>Healthcare:</strong> Varies widely ($25-100/hour)</li>
-              <li><strong>Retail:</strong> Often at or near minimum wage ($22.70/hour)</li>
+              <li><strong>Retail:</strong> Often at or near <Link href="/salary-guide#minimum-wage-nz" className="text-blue-600 hover:underline">minimum wage NZ</Link> ($23.15/hour)</li>
               <li><strong>Professional Services:</strong> $30-80/hour depending on specialization</li>
             </ul>
 

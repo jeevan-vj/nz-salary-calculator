@@ -10,8 +10,8 @@ import { Analytics } from '@vercel/analytics/react';
 export const metadata: Metadata = {
   title: 'NZ Salary Calculator 2026 | PAYE Tax Calculator New Zealand | Free IRD Calculator',
   description:
-    'Free New Zealand PAYE calculator 2026. Calculate take-home pay, tax, KiwiSaver & student loan. Most accurate NZ salary calculator with latest IRD tax rates 2025/2026. Calculate your net income instantly.',
-  keywords: 'NZ salary calculator, PAYE calculator, New Zealand tax calculator, NZ PAYE tax calculator, take home pay calculator NZ, salary calculator New Zealand, IRD tax calculator, NZ income tax calculator, KiwiSaver calculator, student loan calculator NZ, hourly rate calculator NZ, net pay calculator, wage calculator NZ, paycheck calculator New Zealand, tax calculator 2026 NZ, IRD PAYE rates, ACC levy calculator, New Zealand payroll calculator, salary after tax NZ',
+    'Free New Zealand PAYE calculator 2026. Calculate take-home pay, tax, KiwiSaver & student loan. Most accurate NZ salary calculator with latest IRD tax rates 2025/2026. See average salary NZ and minimum wage take-home pay instantly.',
+  keywords: 'NZ salary calculator, PAYE calculator, New Zealand tax calculator, NZ PAYE tax calculator, take home pay calculator NZ, salary calculator New Zealand, salary calculator nz, IRD tax calculator, NZ income tax calculator, KiwiSaver calculator, student loan calculator NZ, hourly rate calculator NZ, net pay calculator, wage calculator NZ, paycheck calculator New Zealand, tax calculator 2026 NZ, IRD PAYE rates, ACC levy calculator, New Zealand payroll calculator, salary after tax NZ, average salary nz, nz average salary, teacher salary nz, teachers salary nz, minimum wage nz, truck driver salary nz',
   authors: [{ name: 'NZ Salary Calculator' }],
   creator: 'NZ Salary Calculator',
   publisher: 'NZ Salary Calculator',
@@ -195,6 +195,22 @@ export default function RootLayout({
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "Yes, the calculator includes student loan repayments based on the current repayment threshold ($22,828 for 2024/2025) and 12% repayment rate on income above this threshold."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is the average salary in NZ?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The average salary in NZ is approximately $70,000 per year (median income). Use our salary calculator to see your take-home pay after tax, KiwiSaver, and other deductions for any salary amount."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is the minimum wage in NZ?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The minimum wage in NZ is $23.15 per hour for adults (as of April 2024). Use our hourly rate calculator to see minimum wage take-home pay after PAYE tax and other deductions."
                     }
                   }
                 ]

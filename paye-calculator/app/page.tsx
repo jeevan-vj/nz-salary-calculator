@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import ResultsDisplay from './components/ResultsDisplay';
 import { calculateTax, TaxCalculationResult, TaxCode } from './utils/taxCalculator';
 import InputForm from './components/InputFrom';
@@ -73,7 +74,7 @@ export default function Home() {
             Free PAYE Tax Calculator - Calculate Your Take-Home Pay
           </p>
           <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            Calculate PAYE tax, KiwiSaver contributions, student loan repayments, and hourly rates with the most accurate NZ income tax calculator using latest IRD rates for the 2024/2025 tax year.
+            Calculate PAYE tax, KiwiSaver contributions, student loan repayments, and hourly rates with the most accurate NZ salary calculator using latest IRD rates for the 2024/2025 tax year. Compare your earnings to the <Link href="/salary-guide" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 hover:underline">average salary NZ</Link> and see your take-home pay instantly.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <span className="inline-flex items-center bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-700 text-blue-800 dark:text-blue-200 text-sm font-semibold px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-shadow duration-200">

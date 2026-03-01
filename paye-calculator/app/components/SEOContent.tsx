@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function SEOContent() {
   return (
     <div className="mt-16 space-y-12">
@@ -150,9 +152,25 @@ export default function SEOContent() {
                 <li>✓ $80,000 after tax New Zealand</li>
                 <li>✓ $100,000 salary take home pay</li>
                 <li>✓ $120,000 net income NZ</li>
-                <li>✓ Minimum wage calculator NZ</li>
+                <li>✓ <Link href="/hourly-rate-calculator" className="text-blue-600 hover:text-blue-800 dark:text-blue-400">Minimum wage calculator NZ</Link></li>
                 <li>✓ Living wage take home pay</li>
               </ul>
+            </div>
+
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 space-y-3 mt-4">
+              <h4 className="font-bold text-lg text-blue-900 dark:text-blue-100">Salary by Profession:</h4>
+              <ul className="grid md:grid-cols-2 gap-2 text-sm text-blue-800 dark:text-blue-200">
+                <li>✓ <Link href="/salary-guide#average-salary-nz" className="hover:underline">Average salary NZ</Link> - $70,000 median</li>
+                <li>✓ <Link href="/salary-guide#teacher-salary-nz" className="hover:underline">Teacher salary NZ</Link> - $50,000 - $140,000</li>
+                <li>✓ <Link href="/salary-guide#truck-driver-salary-nz" className="hover:underline">Truck driver salary NZ</Link> - $50,000 - $95,000</li>
+                <li>✓ <Link href="/salary-guide#minimum-wage-nz" className="hover:underline">Minimum wage NZ</Link> - $23.15/hour</li>
+              </ul>
+              <Link 
+                href="/salary-guide" 
+                className="inline-block mt-2 text-blue-600 dark:text-blue-400 hover:underline font-medium"
+              >
+                View complete NZ Salary Guide →
+              </Link>
             </div>
 
             <h3 className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">
@@ -348,17 +366,17 @@ export default function SEOContent() {
           <div className="space-y-2">
             <h3 className="font-bold text-blue-600 dark:text-blue-400">Salary Calculators</h3>
             <ul className="space-y-1 text-gray-600 dark:text-gray-400">
-              <li>• Annual salary calculator</li>
-              <li>• Monthly pay calculator</li>
-              <li>• Fortnightly pay calculator</li>
-              <li>• Weekly wage calculator</li>
-              <li>• Hourly rate calculator</li>
+              <li>• <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400">NZ salary calculator</Link></li>
+              <li>• <Link href="/hourly-rate-calculator" className="hover:text-blue-600 dark:hover:text-blue-400">Hourly rate calculator</Link></li>
+              <li>• <Link href="/hourly-rate-calculator" className="hover:text-blue-600 dark:hover:text-blue-400">Minimum wage calculator NZ</Link></li>
+              <li>• <Link href="/multiple-income" className="hover:text-blue-600 dark:hover:text-blue-400">Multiple income calculator</Link></li>
+              <li>• <Link href="/salary-guide" className="hover:text-blue-600 dark:hover:text-blue-400">Average salary NZ guide</Link></li>
             </ul>
           </div>
           <div className="space-y-2">
             <h3 className="font-bold text-blue-600 dark:text-blue-400">Tax & Deductions</h3>
             <ul className="space-y-1 text-gray-600 dark:text-gray-400">
-              <li>• PAYE tax calculator</li>
+              <li>• <Link href="/paye-calculator" className="hover:text-blue-600 dark:hover:text-blue-400">PAYE tax calculator</Link></li>
               <li>• Income tax calculator NZ</li>
               <li>• Tax bracket calculator</li>
               <li>• ACC levy calculator</li>
@@ -366,13 +384,13 @@ export default function SEOContent() {
             </ul>
           </div>
           <div className="space-y-2">
-            <h3 className="font-bold text-blue-600 dark:text-blue-400">Savings & Retirement</h3>
+            <h3 className="font-bold text-blue-600 dark:text-blue-400">Savings & Salary Guides</h3>
             <ul className="space-y-1 text-gray-600 dark:text-gray-400">
-              <li>• KiwiSaver calculator</li>
-              <li>• Retirement savings calculator</li>
-              <li>• Student loan calculator</li>
-              <li>• Take-home pay calculator</li>
-              <li>• Budget planning tool</li>
+              <li>• <Link href="/kiwisaver-calculator" className="hover:text-blue-600 dark:hover:text-blue-400">KiwiSaver calculator</Link></li>
+              <li>• <Link href="/salary-guide#teacher-salary-nz" className="hover:text-blue-600 dark:hover:text-blue-400">Teacher salary NZ</Link></li>
+              <li>• <Link href="/salary-guide#truck-driver-salary-nz" className="hover:text-blue-600 dark:hover:text-blue-400">Truck driver salary NZ</Link></li>
+              <li>• <Link href="/salary-guide#minimum-wage-nz" className="hover:text-blue-600 dark:hover:text-blue-400">Minimum wage NZ</Link></li>
+              <li>• <Link href="/salary-guide" className="hover:text-blue-600 dark:hover:text-blue-400">NZ salary guide 2026</Link></li>
             </ul>
           </div>
         </div>
