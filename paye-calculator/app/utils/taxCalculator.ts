@@ -237,7 +237,7 @@ export function calculateTax(
 
   const effectiveTaxRate = income > 0 ? (paye / income) * 100 : 0;
 
-  const acc = income * 0.0167; // ACC earners levy rate 2025-26: $1.67 per $100
+  const acc = income * 0.0175; // ACC earners levy rate 2026-27: $1.75 per $100
   const kiwiSaver = income * (kiwiSaverRate / 100);
   // Student loan repayment: 12% of income over $24,128 threshold (2025-26)
   const studentLoanThreshold = 24128;

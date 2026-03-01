@@ -60,7 +60,7 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="grid gap-4"
         >
-          <h3 className="text-lg font-semibold">Tax Brackets (2024-2025)</h3>
+          <h3 className="text-lg font-semibold">Tax Brackets (2026-2027)</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label>$0 - $15,600</Label>
@@ -94,8 +94,8 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="space-y-2">
-            <Label>ACC Earners&apos; Levy Rate (2024-25)</Label>
-            <div className="text-sm text-muted-foreground">Current rate: 1.67% ($1.67 per $100 of income)</div>
+            <Label>ACC Earners&apos; Levy Rate (2026-27)</Label>
+            <div className="text-sm text-muted-foreground">Current rate: 1.75% ($1.75 per $100 of income)</div>
             <div className="text-sm text-muted-foreground">Maximum annual levy: $2,551 (for income up to $152,791)</div>
           </div>
         </motion.div>
@@ -109,7 +109,7 @@ export function TaxConfiguration() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="space-y-2">
-            <Label>Student Loan Repayment (2024-25)</Label>
+            <Label>Student Loan Repayment (2026-27)</Label>
             <div className="text-sm text-muted-foreground">Repayment rate: 12% of income above threshold</div>
             <div className="text-sm text-muted-foreground">
               Annual threshold: $24,128 (weekly: $464)

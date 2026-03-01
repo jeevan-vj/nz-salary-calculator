@@ -32,7 +32,7 @@ export default function MultipleIncomePage() {
   return (
     <main className="container mx-auto px-2 sm:px-4 py-4 sm:py-6 space-y-4 sm:space-y-6">
       <div className="w-full max-w-4xl mx-auto">
-        <h1 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-6">New Zealand Multiple Income Tax Calculator 2024/2025</h1>
+        <h1 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-6">New Zealand Multiple Income Tax Calculator 2026/2027</h1>
         <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
           Calculate your total PAYE tax and take-home pay from multiple income sources including salary, wages, benefits, and secondary employment using latest IRD rates.
         </p>

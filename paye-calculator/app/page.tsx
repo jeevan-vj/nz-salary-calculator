@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import ResultsDisplay from './components/ResultsDisplay';
+import dynamic from 'next/dynamic';
 import { calculateTax, TaxCalculationResult, TaxCode } from './utils/taxCalculator';
 import InputForm from './components/InputFrom';
 import { TaxConfiguration } from './components/TaxConfiguration';
@@ -11,10 +11,16 @@ import SalaryImpactPreview from './components/SalaryImpactPreview';
 import HourlyEarningsBreakdown from './components/HourlyEarningsBreakdown';
 import SummaryCards from './components/SummaryCards';
 import TaxBracketProgress from './components/TaxBracketProgress';
-import IncomeVsDeductionsChart from './components/IncomeVsDeductionsChart';
 import ShareResults from './components/ShareResults';
 import CalculationHistory from './components/CalculationHistory';
 import SEOContent from './components/SEOContent';
+import IncomePercentileCard from './components/IncomePercentileCard';
+import TaxDistributionCard from './components/TaxDistributionCard';
+
+const ResultsDisplay = dynamic(() => import('./components/ResultsDisplay'));
+const IncomeVsDeductionsChart = dynamic(
+  () => import('./components/IncomeVsDeductionsChart'),
+);
 
 export default function Home() {
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -67,14 +73,14 @@ export default function Home() {
               New Zealand Salary Calculator
             </span>
             <span className="block text-2xl md:text-3xl mt-2 text-gray-700 dark:text-gray-300">
-              2024/2025
+              2026/2027
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-3 font-semibold" itemProp="description">
             Free PAYE Tax Calculator - Calculate Your Take-Home Pay
           </p>
           <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            Calculate PAYE tax, KiwiSaver contributions, student loan repayments, and hourly rates with the most accurate NZ salary calculator using latest IRD rates for the 2024/2025 tax year. Compare your earnings to the <Link href="/salary-guide" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 hover:underline">average salary NZ</Link> and see your take-home pay instantly.
+            Calculate PAYE tax, KiwiSaver contributions, student loan repayments, and hourly rates with the most accurate NZ salary calculator using latest IRD rates for the 2026/2027 tax year. Compare your earnings to the <Link href="/salary-guide" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 hover:underline">average salary NZ</Link> and see your take-home pay instantly.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <span className="inline-flex items-center bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-700 text-blue-800 dark:text-blue-200 text-sm font-semibold px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -108,6 +114,11 @@ export default function Home() {
 
           {/* Results */}
           <div className="lg:col-span-8 space-y-6" ref={resultsRef}>
+            <div aria-live="polite" className="sr-only">
+              {results
+                ? `Calculation updated. Net income is ${results.netIncome.toLocaleString("en-NZ", { maximumFractionDigits: 0 })} dollars.`
+                : "No calculation result yet."}
+            </div>
             {!results && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -160,7 +171,7 @@ export default function Home() {
                           PAYE Tax Calculation
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-gray-300">
-                          Accurate calculations using 2024/2025 IRD tax rates
+                          Accurate calculations using 2026/2027 IRD tax rates
                         </p>
                       </div>
                     </div>
@@ -211,13 +222,13 @@ export default function Home() {
                   <div className="flex items-center mb-5">
                     <span className="text-2xl mr-3">📊</span>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      2024/2025 Tax Brackets
+                      2026/2027 Tax Brackets
                     </h3>
                   </div>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                       <span className="font-medium text-gray-700 dark:text-gray-300">
-                        $0 - $14,000
+                        $0 - $15,600
                       </span>
                       <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">
                         10.5%
@@ -225,7 +236,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                       <span className="font-medium text-gray-700 dark:text-gray-300">
-                        $14,001 - $48,000
+                        $15,601 - $53,500
                       </span>
                       <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">
                         17.5%
@@ -233,7 +244,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                       <span className="font-medium text-gray-700 dark:text-gray-300">
-                        $48,001 - $70,000
+                        $53,501 - $78,100
                       </span>
                       <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">
                         30%
@@ -241,7 +252,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                       <span className="font-medium text-gray-700 dark:text-gray-300">
-                        $70,001 - $180,000
+                        $78,101 - $180,000
                       </span>
                       <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">
                         33%
@@ -317,10 +328,12 @@ export default function Home() {
               {results && (
                 <div className="grid md:grid-cols-2 gap-6">
                   <ShareResults results={results} />
-                  <div className="md:col-span-1">
-                    {/* Placeholder for future components */}
-                  </div>
+                  <IncomePercentileCard results={results} />
                 </div>
+              )}
+
+              {results && (
+                <TaxDistributionCard results={results} />
               )}
               
               {results && isHourlyMode && (
@@ -423,7 +436,7 @@ export default function Home() {
                 Accurate PAYE Tax Calculations
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Our calculator uses the latest IRD tax rates and brackets for the 2024/2025 tax year. Get precise calculations for PAYE tax, ACC levies, and net take-home pay. 
+                Our calculator uses the latest IRD tax rates and brackets for the 2026/2027 tax year. Get precise calculations for PAYE tax, ACC levies, and net take-home pay. 
                 <a href="/salary-guide" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Learn more about NZ tax brackets</a>.
               </p>
               
@@ -473,7 +486,7 @@ export default function Home() {
             </h3>
             <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
               <p className="text-gray-600 dark:text-gray-300 ml-10 leading-relaxed" itemProp="text">
-                Our calculator uses the official IRD tax rates and brackets for 2024/2025. It includes PAYE tax, ACC earner levy, and considers KiwiSaver contributions and student loan repayments for maximum accuracy. All calculations are based on current New Zealand tax legislation.
+                Our calculator uses the official IRD tax rates and brackets for 2026/2027. It includes PAYE tax, ACC earner levy, and considers KiwiSaver contributions and student loan repayments for maximum accuracy. All calculations are based on current New Zealand tax legislation.
               </p>
             </div>
           </div>
@@ -497,7 +510,7 @@ export default function Home() {
             </h3>
             <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
               <p className="text-gray-600 dark:text-gray-300 ml-10 leading-relaxed" itemProp="text">
-                Yes, the calculator includes student loan repayments based on the current repayment threshold ($22,828 for 2024/2025) and 12% repayment rate on income above this threshold.
+                Yes, the calculator includes student loan repayments based on the current repayment threshold ($24,128) and 12% repayment rate on income above this threshold.
               </p>
             </div>
           </div>

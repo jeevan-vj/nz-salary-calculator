@@ -7,7 +7,7 @@ export default function KiwiSaverCalculatorPage() {
       <div className="mb-8">
         
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          KiwiSaver Calculator New Zealand 2024/2025
+          KiwiSaver Calculator New Zealand 2026/2027
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
           Calculate your KiwiSaver contributions and see how they affect your take-home pay
@@ -17,7 +17,7 @@ export default function KiwiSaverCalculatorPage() {
       <div className="grid md:grid-cols-4 gap-4 mb-8">
         <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg text-center">
           <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Minimum Rate</h3>
-          <p className="text-2xl font-bold text-blue-800 dark:text-blue-200">3%</p>
+          <p className="text-2xl font-bold text-blue-800 dark:text-blue-200">3.5%</p>
           <p className="text-sm text-blue-700 dark:text-blue-300">Employee contribution</p>
         </div>
         <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg text-center">
@@ -27,7 +27,7 @@ export default function KiwiSaverCalculatorPage() {
         </div>
         <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg text-center">
           <h3 className="font-semibold text-purple-900 dark:text-purple-100 mb-2">Govt Contribution</h3>
-          <p className="text-2xl font-bold text-purple-800 dark:text-purple-200">$521</p>
+          <p className="text-2xl font-bold text-purple-800 dark:text-purple-200">$260.72</p>
           <p className="text-sm text-purple-700 dark:text-purple-300">Maximum annually</p>
         </div>
         <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg text-center">
@@ -58,14 +58,14 @@ export default function KiwiSaverCalculatorPage() {
             <h2>Understanding KiwiSaver Contribution Rates</h2>
             <p>
               KiwiSaver is New Zealand's voluntary retirement savings scheme. As an employee, 
-              you can choose to contribute 3%, 4%, 6%, 8%, or 10% of your gross salary.
+              you can choose to contribute 3.5%, 4%, 6%, 8%, or 10% of your gross salary.
             </p>
 
             <h3>Employee Contribution Options</h3>
             <div className="bg-white dark:bg-gray-800 border rounded-lg p-6 my-6">
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold">3% (Minimum)</span>
+                  <span className="font-semibold">3.5% (Minimum)</span>
                   <span className="text-green-600">Good starting point</span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -89,7 +89,7 @@ export default function KiwiSaverCalculatorPage() {
 
             <h3>Employer Contributions</h3>
             <p>
-              Your employer must contribute at least 3% of your gross salary to your KiwiSaver 
+              Your employer must contribute at least 3.5% of your gross salary to your KiwiSaver 
               account. Some employers offer higher contribution rates as a benefit.
             </p>
 
@@ -98,22 +98,22 @@ export default function KiwiSaverCalculatorPage() {
               <ul className="space-y-1 text-blue-800 dark:text-blue-200">
                 <li>• Employer contributions are calculated on gross salary</li>
                 <li>• Employer contributions don't count toward your tax</li>
-                <li>• Some employers may contribute more than 3%</li>
+                <li>• Some employers may contribute more than 3.5%</li>
                 <li>• Employer contributions are subject to Employer Superannuation Contribution Tax (ESCT)</li>
               </ul>
             </div>
 
             <h2>Government Contributions (Member Tax Credit)</h2>
             <p>
-              The government contributes up to $521.43 per year to your KiwiSaver account, 
-              provided you contribute at least $1,042.86 annually.
+              The government contributes up to $260.72 per year to your KiwiSaver account, 
+              provided you contribute at least $1,042.88 annually.
             </p>
 
             <h3>How Government Contributions Work</h3>
             <ul>
-              <li>Government matches 50 cents for every dollar you contribute</li>
-              <li>Maximum government contribution: $521.43 per year</li>
-              <li>You must contribute at least $1,042.86 to get the full government contribution</li>
+              <li>Government matches 25 cents for every dollar you contribute</li>
+              <li>Maximum government contribution: $260.72 per year</li>
+              <li>You must contribute at least $1,042.88 to get the full government contribution</li>
               <li>Calculated from July 1st to June 30th each year</li>
             </ul>
 
@@ -128,38 +128,38 @@ export default function KiwiSaverCalculatorPage() {
                   <span>Total</span>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
-                  <span>3%</span>
-                  <span>$2,100</span>
-                  <span>$2,100</span>
-                  <span className="font-semibold">$4,200</span>
+                  <span>3.5%</span>
+                  <span>$2,450</span>
+                  <span>$2,450</span>
+                  <span className="font-semibold">$4,900</span>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
                   <span>4%</span>
                   <span>$2,800</span>
-                  <span>$2,100</span>
-                  <span className="font-semibold">$4,900</span>
+                  <span>$2,450</span>
+                  <span className="font-semibold">$5,250</span>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
                   <span>6%</span>
                   <span>$4,200</span>
-                  <span>$2,100</span>
-                  <span className="font-semibold">$6,300</span>
+                  <span>$2,450</span>
+                  <span className="font-semibold">$6,650</span>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
                   <span>8%</span>
                   <span>$5,600</span>
-                  <span>$2,100</span>
-                  <span className="font-semibold">$7,700</span>
+                  <span>$2,450</span>
+                  <span className="font-semibold">$8,050</span>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
                   <span>10%</span>
                   <span>$7,000</span>
-                  <span>$2,100</span>
-                  <span className="font-semibold">$9,100</span>
+                  <span>$2,450</span>
+                  <span className="font-semibold">$9,450</span>
                 </div>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
-                * Plus up to $521.43 government contribution in all cases
+                * Plus up to $260.72 government contribution in all cases
               </p>
             </div>
 
@@ -188,7 +188,7 @@ export default function KiwiSaverCalculatorPage() {
             <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 my-8">
               <h3 className="text-green-900 dark:text-green-100 font-semibold mb-3">💡 Strategy Tip</h3>
               <p className="text-green-800 dark:text-green-200">
-                Start with 3% to get the full employer match, then consider increasing gradually. 
+                Start with 3.5% to get the full employer match, then consider increasing gradually. 
                 Even small increases can make a significant difference over time due to compound growth.
               </p>
             </div>

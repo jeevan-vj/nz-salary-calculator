@@ -27,7 +27,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
   const [income, setIncome] = useState<string>('70000');
   const [hourlyRate, setHourlyRate] = useState<string>('35');
   const [hoursPerWeek, setHoursPerWeek] = useState<number>(40);
-  const [kiwiSaverRate, setKiwiSaverRate] = useState<number>(3);
+  const [kiwiSaverRate, setKiwiSaverRate] = useState<number>(3.5);
   const [hasStudentLoan, setHasStudentLoan] = useState<boolean>(false);
   const [includeKiwiSaver, setIncludeKiwiSaver] = useState<boolean>(true);
   const [taxCode, setTaxCode] = useState<TaxCode>('M');
@@ -144,6 +144,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             <button
               type="button"
               onClick={() => setInputMode('annual')}
+              aria-pressed={inputMode === 'annual'}
               className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
                 inputMode === 'annual'
                   ? 'bg-blue-600 text-white'
@@ -155,6 +156,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             <button
               type="button"
               onClick={() => setInputMode('hourly')}
+              aria-pressed={inputMode === 'hourly'}
               className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
                 inputMode === 'hourly'
                   ? 'bg-blue-600 text-white'
@@ -200,10 +202,11 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             />
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">
+              <label htmlFor="hours-per-week" className="text-sm font-medium">
                 Hours per week: {hoursPerWeek}
               </label>
               <Slider
+                id="hours-per-week"
                 defaultValue={[hoursPerWeek]}
                 max={60}
                 min={10}
@@ -227,7 +230,7 @@ export default function InputForm({ onCalculate }: InputFormProps) {
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
         >
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Tax Code</label>
+            <label htmlFor="tax-code" className="text-sm font-medium">Tax Code</label>
             {taxCodeSuggestion && !isManualTaxCode && (
               <span className={`text-xs px-2 py-1 rounded-full ${
                 taxCodeSuggestion.confidence === 'high' 
@@ -242,6 +245,8 @@ export default function InputForm({ onCalculate }: InputFormProps) {
           </div>
           
           <select
+            id="tax-code"
+            aria-label="Tax code"
             value={taxCode}
             onChange={(e) => {
               setTaxCode(e.target.value as TaxCode);
@@ -312,14 +317,15 @@ export default function InputForm({ onCalculate }: InputFormProps) {
             variants={itemVariants}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           >
-            <label className="text-sm font-medium">
+            <label htmlFor="kiwisaver-rate" className="text-sm font-medium">
               KiwiSaver Rate: {kiwiSaverRate}%
             </label>
             <Slider
+              id="kiwisaver-rate"
               defaultValue={[kiwiSaverRate]}
               max={10}
-              min={3}
-              step={1}
+              min={3.5}
+              step={0.5}
               onValueChange={(value) => setKiwiSaverRate(value[0])}
               className="w-full"
             />

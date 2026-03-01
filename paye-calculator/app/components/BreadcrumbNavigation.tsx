@@ -15,6 +15,11 @@ const pathMapping: Record<string, string> = {
   '/salary-guide': 'Salary Guide',
   '/hourly-rate-calculator': 'Hourly Rate Calculator',
   '/kiwisaver-calculator': 'KiwiSaver Calculator',
+  '/student-loan-calculator': 'Student Loan Calculator',
+  '/student-loan-repayment': 'Student Loan Repayment Guide',
+  '/tax-brackets-nz-2026': 'NZ Tax Brackets 2026',
+  '/kiwisaver-guide': 'KiwiSaver Guide',
+  '/cost-of-living-calculator': 'Cost of Living Calculator',
 };
 
 export default function BreadcrumbNavigation() {

@@ -66,8 +66,8 @@ export const calculateMultipleIncomeTax = (
     }
 
     // Calculate other deductions
-    totalAcc += yearlyAmount * 0.0167; // ACC earners levy 2025-26: $1.67 per $100
-    totalKiwiSaver += yearlyAmount * 0.03; // Default KiwiSaver rate
+    totalAcc += yearlyAmount * 0.0175; // ACC earners levy 2026-27: $1.75 per $100
+    totalKiwiSaver += yearlyAmount * 0.035; // Default KiwiSaver rate from April 2026
     if (totalIncome > 24128) { // Student loan threshold 2025-26
       totalStudentLoan += yearlyAmount * 0.12;
     }
@@ -83,7 +83,7 @@ export const calculateMultipleIncomeTax = (
     kiwiSaver: totalKiwiSaver,
     studentLoan: totalStudentLoan,
     hasStudentLoan: totalStudentLoan > 0,
-    kiwiSaverRate: 3,
+    kiwiSaverRate: 3.5,
     taxCode: 'M' as const,
     effectiveTaxRate: totalIncome > 0 ? (totalTax / totalIncome) * 100 : 0,
     currentTaxBracket: 0,

@@ -3,15 +3,14 @@
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
-
-const GA_MEASUREMENT_ID = 'G-QYT3CJ5RBT';
+import { GA_MEASUREMENT_ID } from '../utils/gtag';
 
 function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (pathname) {
+    if (pathname && window.gtag) {
       window.gtag('config', GA_MEASUREMENT_ID, {
         page_path: pathname + searchParams.toString(),
       });

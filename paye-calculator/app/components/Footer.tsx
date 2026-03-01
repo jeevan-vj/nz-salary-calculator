@@ -51,6 +51,18 @@ export default function Footer() {
                   KiwiSaver Calculator
                 </Link>
               </li>
+              <li>
+                <Link href="/student-loan-calculator" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 flex items-center group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Student Loan Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/cost-of-living-calculator" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 flex items-center group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Cost of Living Calculator
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -62,6 +74,18 @@ export default function Footer() {
                 <Link href="/salary-guide" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 flex items-center group">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Average Salary NZ Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/tax-brackets-nz-2026" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 flex items-center group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  NZ Tax Brackets 2026
+                </Link>
+              </li>
+              <li>
+                <Link href="/student-loan-repayment" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 flex items-center group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Student Loan Repayment Guide
                 </Link>
               </li>
               <li>
@@ -93,7 +117,7 @@ export default function Footer() {
 
           {/* Quick Info */}
           <div>
-            <h4 className="font-bold text-gray-900 dark:text-white mb-4 text-base">Tax Year 2024/2025</h4>
+            <h4 className="font-bold text-gray-900 dark:text-white mb-4 text-base">Tax Year 2026/2027</h4>
             <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
               <li className="flex items-center">
                 <span className="text-green-600 dark:text-green-400 mr-2">✓</span>

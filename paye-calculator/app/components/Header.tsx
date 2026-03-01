@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { useTheme } from '../theme/ThemeProvider';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const navigationItems = [
   { href: '/', label: 'Calculator', description: 'Main salary calculator' },
   { href: '/multiple-income', label: 'Multiple Income', description: 'Multiple jobs calculator' },
   { href: '/hourly-rate-calculator', label: 'Hourly Rate', description: 'Convert salary to hourly' },
   { href: '/kiwisaver-calculator', label: 'KiwiSaver', description: 'Retirement calculator' },
+  { href: '/student-loan-calculator', label: 'Student Loan', description: 'Repayment projection calculator' },
+  { href: '/cost-of-living-calculator', label: 'Cost of Living', description: 'City purchasing power comparison' },
   { href: '/salary-guide', label: 'Salary Guide', description: 'Industry averages & tax info' },
 ];
 
@@ -24,7 +27,14 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="text-2xl transition-transform duration-300 group-hover:scale-110">🧮</div>
+              <Image
+                src="/icon-192x192.png"
+                alt="NZ Salary Calculator logo"
+                width={32}
+                height={32}
+                className="transition-transform duration-300 group-hover:scale-110"
+                priority
+              />
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent">
                 NZ Salary Calculator
               </h1>

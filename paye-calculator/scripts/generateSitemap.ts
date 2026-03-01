@@ -9,7 +9,12 @@ const routes = [
   '/hourly-rate-calculator',
   '/kiwisaver-calculator',
   '/multiple-income',
-  '/salary-guide'
+  '/salary-guide',
+  '/student-loan-calculator',
+  '/cost-of-living-calculator',
+  '/tax-brackets-nz-2026',
+  '/kiwisaver-guide',
+  '/student-loan-repayment',
 ];
 
 function generateSitemap() {

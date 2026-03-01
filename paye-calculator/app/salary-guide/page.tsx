@@ -10,7 +10,7 @@ export default function SalaryGuidePage() {
           New Zealand Salary Guide 2026 - Average Salary NZ, Tax Rates & Take-Home Pay
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300" itemProp="description">
-          Complete NZ average salary guide for 2025/2026. Find teacher salary NZ, minimum wage NZ, truck driver salary NZ and more. 
+          Complete NZ average salary guide for 2026/2027. Find teacher salary NZ, minimum wage NZ, truck driver salary NZ and more. 
           Updated with latest IRD tax brackets and take-home pay calculations.
         </p>
         <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
@@ -54,14 +54,14 @@ export default function SalaryGuidePage() {
           </p>
         </section>
 
-        <h2>Understanding New Zealand Tax Brackets 2024/2025</h2>
+        <h2>Understanding New Zealand Tax Brackets 2026/2027</h2>
         <p>
           New Zealand operates a progressive tax system where higher incomes are taxed at higher rates. 
           Understanding these tax brackets is crucial for calculating your take-home pay and making informed financial decisions.
         </p>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 my-6 border">
-          <h3>2024/2025 Tax Brackets</h3>
+          <h3>2026/2027 Tax Brackets</h3>
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead>
@@ -73,29 +73,29 @@ export default function SalaryGuidePage() {
               </thead>
               <tbody>
                 <tr className="border-b">
-                  <td className="py-2">$0 - $14,000</td>
+                  <td className="py-2">$0 - $15,600</td>
                   <td className="py-2">10.5%</td>
-                  <td className="py-2">$0 - $1,470</td>
+                  <td className="py-2">$0 - $1,638</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="py-2">$14,001 - $48,000</td>
+                  <td className="py-2">$15,601 - $53,500</td>
                   <td className="py-2">17.5%</td>
-                  <td className="py-2">$1,470 - $7,420</td>
+                  <td className="py-2">$1,638 - $8,270.50</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="py-2">$48,001 - $70,000</td>
+                  <td className="py-2">$53,501 - $78,100</td>
                   <td className="py-2">30%</td>
-                  <td className="py-2">$7,420 - $14,020</td>
+                  <td className="py-2">$8,270.50 - $15,650.50</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="py-2">$70,001 - $180,000</td>
+                  <td className="py-2">$78,101 - $180,000</td>
                   <td className="py-2">33%</td>
-                  <td className="py-2">$14,020 - $50,320</td>
+                  <td className="py-2">$15,650.50 - $49,277.50</td>
                 </tr>
                 <tr>
                   <td className="py-2">$180,001+</td>
                   <td className="py-2">39%</td>
-                  <td className="py-2">$50,320+</td>
+                  <td className="py-2">$49,277.50+</td>
                 </tr>
               </tbody>
             </table>
@@ -163,19 +163,19 @@ export default function SalaryGuidePage() {
         <section id="minimum-wage-nz" className="my-8 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6 border border-yellow-200 dark:border-yellow-800">
           <h2 className="text-yellow-900 dark:text-yellow-100 mt-0">Minimum Wage NZ</h2>
           <p className="text-yellow-800 dark:text-yellow-200">
-            The <strong>minimum wage NZ</strong> (minimum wage New Zealand) is currently <strong>$23.15 per hour</strong> for 
-            adult workers as of April 2024. This applies to employees aged 16 and over who are not starting-out or training workers.
+            The <strong>minimum wage NZ</strong> (minimum wage New Zealand) is currently <strong>$23.95 per hour</strong> for 
+            adult workers as of April 2026. This applies to employees aged 16 and over who are not starting-out or training workers.
           </p>
           <div className="my-4">
-            <h4 className="text-yellow-900 dark:text-yellow-100 font-semibold mb-2">2024 Minimum Wage Rates:</h4>
+            <h4 className="text-yellow-900 dark:text-yellow-100 font-semibold mb-2">2026 Minimum Wage Rates:</h4>
             <ul className="space-y-1 text-yellow-800 dark:text-yellow-200">
-              <li><strong>Adult minimum wage:</strong> $23.15 per hour</li>
-              <li><strong>Starting-out wage:</strong> $18.52 per hour (80% of adult rate)</li>
-              <li><strong>Training wage:</strong> $18.52 per hour (80% of adult rate)</li>
+              <li><strong>Adult minimum wage:</strong> $23.95 per hour</li>
+              <li><strong>Starting-out wage:</strong> $19.16 per hour (80% of adult rate)</li>
+              <li><strong>Training wage:</strong> $19.16 per hour (80% of adult rate)</li>
             </ul>
           </div>
           <p className="text-yellow-800 dark:text-yellow-200">
-            At 40 hours per week, the minimum wage NZ equates to approximately <strong>$48,152 per year</strong> before tax. 
+            At 40 hours per week, the minimum wage NZ equates to approximately <strong>$49,816 per year</strong> before tax. 
             Want to know your take-home pay on minimum wage?
           </p>
           <Link 
@@ -266,9 +266,9 @@ export default function SalaryGuidePage() {
         </p>
 
         <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-6 my-6">
-          <h3 className="text-orange-900 dark:text-orange-100 font-semibold mb-3">2024/2025 Student Loan Details</h3>
+          <h3 className="text-orange-900 dark:text-orange-100 font-semibold mb-3">2026/2027 Student Loan Details</h3>
           <ul className="space-y-2 text-orange-800 dark:text-orange-200">
-            <li><strong>Repayment Threshold:</strong> $22,828 annually</li>
+            <li><strong>Repayment Threshold:</strong> $24,128 annually</li>
             <li><strong>Repayment Rate:</strong> 12% on income above threshold</li>
             <li><strong>Interest Rate:</strong> 0% for NZ residents</li>
           </ul>

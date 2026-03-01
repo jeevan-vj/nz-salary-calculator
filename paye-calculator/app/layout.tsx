@@ -6,6 +6,9 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 import Footer from './components/Footer';
 import BreadcrumbNavigation from './components/BreadcrumbNavigation';
 import { Analytics } from '@vercel/analytics/react';
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: 'NZ Salary Calculator 2026 | PAYE Tax Calculator New Zealand | Free IRD Calculator',
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
       url: '/og-image.svg',
       width: 1200,
       height: 630,
-      alt: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2024/2025',
+      alt: 'New Zealand Salary Calculator - Free PAYE Tax Calculator 2026/2027',
     }],
   },
   twitter: {
@@ -178,7 +181,7 @@ export default function RootLayout({
                     "name": "How accurate is this New Zealand salary calculator?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Our calculator uses the official IRD tax rates and brackets for 2024/2025. It includes PAYE tax, ACC earner levy, and considers KiwiSaver contributions and student loan repayments for maximum accuracy."
+                      "text": "Our calculator uses the official IRD tax rates and brackets for 2026/2027. It includes PAYE tax, ACC earner levy, and considers KiwiSaver contributions and student loan repayments for maximum accuracy."
                     }
                   },
                   {
@@ -194,7 +197,7 @@ export default function RootLayout({
                     "name": "Does this calculator include student loan repayments?", 
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Yes, the calculator includes student loan repayments based on the current repayment threshold ($22,828 for 2024/2025) and 12% repayment rate on income above this threshold."
+                      "text": "Yes, the calculator includes student loan repayments based on the current repayment threshold ($24,128) and 12% repayment rate on income above this threshold."
                     }
                   },
                   {
@@ -210,7 +213,7 @@ export default function RootLayout({
                     "name": "What is the minimum wage in NZ?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "The minimum wage in NZ is $23.15 per hour for adults (as of April 2024). Use our hourly rate calculator to see minimum wage take-home pay after PAYE tax and other deductions."
+                      "text": "The minimum wage in NZ is $23.95 per hour for adults (as of April 2026). Use our hourly rate calculator to see minimum wage take-home pay after PAYE tax and other deductions."
                     }
                   }
                 ]
@@ -229,11 +232,19 @@ export default function RootLayout({
           });`}
         </script>
       </head>
-      <body className="transition-colors duration-200">
+      <body className={`${inter.className} transition-colors duration-200`}>
         <ThemeProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded"
+          >
+            Skip to main content
+          </a>
           <Header />
           <BreadcrumbNavigation />
-          <main className="max-w-7xl mx-auto p-4">{children}</main>
+          <main id="main-content" className="max-w-7xl mx-auto p-4">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
         <Analytics />

@@ -41,7 +41,7 @@ export default function SummaryCards({ results }: SummaryCardsProps) {
       icon: Shield,
       color: 'text-orange-600',
       bgColor: 'bg-orange-50 dark:bg-orange-900/20',
-      percentage: '1.67',
+      percentage: '1.75',
       label: 'per $100 earned'
     }
   ];

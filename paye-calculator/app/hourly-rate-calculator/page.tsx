@@ -21,15 +21,15 @@ export default function HourlyRateCalculatorPage() {
               💰 Minimum Wage NZ Calculator
             </h2>
             <p className="text-yellow-800 dark:text-yellow-200 mb-3">
-              The current <strong>minimum wage NZ</strong> is <strong>$23.15 per hour</strong> (as of April 2024). 
-              At 40 hours per week, this equals approximately <strong>$48,152 per year</strong> before tax.
+              The current <strong>minimum wage NZ</strong> is <strong>$23.95 per hour</strong> (as of April 2026). 
+              At 40 hours per week, this equals approximately <strong>$49,816 per year</strong> before tax.
             </p>
             <div className="bg-yellow-100 dark:bg-yellow-900/40 rounded p-4 mb-4">
               <p className="text-yellow-900 dark:text-yellow-100 font-medium">Minimum Wage Take-Home Pay (40 hrs/week):</p>
               <ul className="text-yellow-800 dark:text-yellow-200 text-sm mt-2 space-y-1">
-                <li>• Gross: $48,152/year ($926/week)</li>
-                <li>• After PAYE Tax: ~$41,500/year (~$798/week)</li>
-                <li>• After KiwiSaver (3%): ~$40,055/year (~$770/week)</li>
+                <li>• Gross: $49,816/year ($958/week)</li>
+                <li>• After PAYE Tax: ~$42,800/year (~$823/week)</li>
+                <li>• After KiwiSaver (3.5%): ~$41,056/year (~$789/week)</li>
               </ul>
             </div>
             <Link 
@@ -113,7 +113,7 @@ export default function HourlyRateCalculatorPage() {
             <ul>
               <li><strong>Technology:</strong> Generally higher hourly rates ($30-70/hour)</li>
               <li><strong>Healthcare:</strong> Varies widely ($25-100/hour)</li>
-              <li><strong>Retail:</strong> Often at or near <Link href="/salary-guide#minimum-wage-nz" className="text-blue-600 hover:underline">minimum wage NZ</Link> ($23.15/hour)</li>
+              <li><strong>Retail:</strong> Often at or near <Link href="/salary-guide#minimum-wage-nz" className="text-blue-600 hover:underline">minimum wage NZ</Link> ($23.95/hour)</li>
               <li><strong>Professional Services:</strong> $30-80/hour depending on specialization</li>
             </ul>
 
@@ -125,7 +125,7 @@ export default function HourlyRateCalculatorPage() {
             
             <ul>
               <li><strong>PAYE Tax:</strong> 10.5% to 39% depending on income level</li>
-              <li><strong>ACC Levy:</strong> Currently 1.6% of gross earnings</li>
+              <li><strong>ACC Levy:</strong> Currently 1.75% of gross earnings</li>
               <li><strong>KiwiSaver:</strong> 3%, 4%, 6%, 8%, or 10% (if enrolled)</li>
               <li><strong>Student Loan:</strong> 12% on income above $22,828 annually</li>
             </ul>
