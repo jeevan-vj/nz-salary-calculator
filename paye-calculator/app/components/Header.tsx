@@ -28,7 +28,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3 group">
               <Image
-                src="/icon-192x192.png"
+                src="/icon-192x192.svg"
                 alt="NZ Salary Calculator logo"
                 width={32}
                 height={32}

@@ -28,9 +28,9 @@
   ],
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/icon-192x192.svg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any"
     },
     {
@@ -46,21 +46,21 @@
       "short_name": "PAYE",
       "description": "Calculate PAYE tax and take-home pay",
       "url": "/paye-calculator",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192x192.svg", "sizes": "192x192", "type": "image/svg+xml" }]
     },
     {
       "name": "Hourly Rate",
       "short_name": "Hourly",
       "description": "Calculate hourly rate from annual salary",
       "url": "/hourly-rate-calculator",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192x192.svg", "sizes": "192x192", "type": "image/svg+xml" }]
     },
     {
       "name": "KiwiSaver",
       "short_name": "KiwiSaver",
       "description": "Calculate KiwiSaver contributions",
       "url": "/kiwisaver-calculator",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192x192.svg", "sizes": "192x192", "type": "image/svg+xml" }]
     }
   ]
 }
